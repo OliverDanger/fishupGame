@@ -18,3 +18,8 @@ https://drive.google.com/file/d/1M7RTzjU1A4CGOt_ReRJSZYOkCTR6pd9G/view?usp=shari
 4. Expand fishing locations
 
 
+## Log
+
+#### June 14th 
+- setup vite react frontend
+- troubleshooting install
