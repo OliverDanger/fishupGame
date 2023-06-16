@@ -1,4 +1,4 @@
-class AllItems < ActiveRecord::Migration[7.0]
+class Items < ActiveRecord::Migration[7.0]
   def change
     create_table :items do |t|
       t.string :name
@@ -12,5 +12,3 @@ class AllItems < ActiveRecord::Migration[7.0]
     end
   end
 end
-
-# The types supported by Active Record are :primary_key, :string, :text, :integer, :float, :decimal, :datetime, :timestamp, :time, :date, :binary, :boolean.
