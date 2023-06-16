@@ -14,15 +14,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_16_101420) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "all_items", force: :cascade do |t|
+  create_table "items", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.decimal "melting_point", precision: 8, scale: 2
     t.decimal "base_value", precision: 11, scale: 2
     t.decimal "weight", precision: 8, scale: 2
-    t.boolean "magnetic"
-    t.boolean "hookable"
-    t.boolean "netable"
+    t.boolean "magnetic", default: false
+    t.boolean "hookable", default: true
+    t.boolean "netable", default: false
   end
 
 end
