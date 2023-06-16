@@ -10,9 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_16_194052) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_16_201543) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "clothing_articles", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "colour"
+    t.integer "fancy"
+    t.integer "cool"
+    t.integer "eccentric"
+    t.integer "camouflage"
+    t.boolean "set"
+    t.boolean "hat"
+    t.boolean "face_upper"
+    t.boolean "face_lower"
+    t.boolean "neck"
+    t.boolean "body_upper"
+    t.boolean "body_lower"
+    t.boolean "hand_left"
+    t.boolean "hand_right"
+    t.boolean "legs_upper"
+    t.boolean "legs_lower"
+    t.boolean "socks"
+    t.boolean "shoes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "inventories", force: :cascade do |t|
     t.integer "item_id"
