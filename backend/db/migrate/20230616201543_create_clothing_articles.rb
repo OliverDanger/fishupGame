@@ -22,7 +22,6 @@ class CreateClothingArticles < ActiveRecord::Migration[7.0]
       t.boolean :socks
       t.boolean :shoes
 
-
       t.timestamps
     end
   end
