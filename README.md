@@ -8,6 +8,10 @@ You play as a fishing robot AI who is tasked with cleaning up in Fishcorp Bay, a
 - Convenient crafting system with minimal time wasted on repetitive tasks and juggling space
 - Play games and explore to collect items and progress stories
 
+Trello does not allow sharing the link without giving full edit control to link owners. Here is a sample of the trello planning board for Fish-Up Game:
+
+![Trello board on 2023/06/26](https://github.com/OliverDanger/fishupGame/blob/83145daef18bd98660bd0880406e563eab94b5ae/docs/trello_20230626.png)
+
 ## Setup
 
 ### Backend
