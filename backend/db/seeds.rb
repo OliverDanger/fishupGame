@@ -65,5 +65,25 @@ items = Item.create!([
     magnetic: false,
     hookable: false,
     netable: true,
+  },
+  {
+    name: "Sand",
+    description: "It's so fine it feels like dust when it's dry",
+    melting_point: 255.55,
+    base_value: 0.10,
+    weight: 0.33,
+    magnetic: false,
+    hookable: false,
+    netable: true,
+  }
+  {
+    name: "Sea Glass",
+    description: "It's so fine it feels like dust when it's dry",
+    melting_point: 255.55,
+    base_value: 0.10,
+    weight: 0.33,
+    magnetic: false,
+    hookable: false,
+    netable: true,
   }
 ])
