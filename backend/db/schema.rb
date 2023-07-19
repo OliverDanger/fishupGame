@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_18_203134) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_17_175109) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -111,11 +111,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_18_203134) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tiles", force: :cascade do |t|
+    t.integer "x"
+    t.integer "y"
+    t.integer "type_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "x_coordinate"
+    t.integer "y_coordinate"
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 

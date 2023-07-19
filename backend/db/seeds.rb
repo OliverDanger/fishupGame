@@ -75,7 +75,7 @@ items = Item.create!([
     magnetic: false,
     hookable: false,
     netable: true,
-  }
+  },
   {
     name: "Sea Glass",
     description: "It's so fine it feels like dust when it's dry",
@@ -85,5 +85,32 @@ items = Item.create!([
     magnetic: false,
     hookable: false,
     netable: true,
+  }
+])
+
+puts "Creating Map..."
+
+Tile.destroy_all
+
+tiles = Tile.create!([
+  {
+    x: 0,
+    y: 0,
+    type_number: 0,
+  },
+  {
+    x: 1,
+    y: 0,
+    type_number: 0,
+  },
+  {
+    x: 0,
+    y: 1,
+    type_number: 0,
+  },
+  {
+    x: 1,
+    y: 1,
+    type_number: 1,
   }
 ])
