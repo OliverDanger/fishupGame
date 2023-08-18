@@ -1,7 +1,7 @@
 // Map.scss
 .map {
   display: flexbox;
-  flex-direction: column; // Arrange tiles in a row
+  flex-direction: column;
 }
 
 .mapRow {
@@ -9,5 +9,8 @@
 }
 
 .mapTile {
-  /* Add any styles for individual tiles */
+  margin: 0;
+  padding: 0;
+  width: 100px;
+  height: 100px;
 }
