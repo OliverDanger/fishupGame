@@ -3,11 +3,10 @@
 Fish-up Game is a flash-game-inspired web game, combining the joys of fishing and dress-up games.
 You play as a fishing robot AI who is tasked with cleaning up in Fishcorp Bay. Use your omni-printer to transform the trash into treasure!
 
-
-- Convenient crafting system with minimal time wasted on repetitive tasks and juggling space 
-- Play games and explore to collect items and progress stories
-- Self expression through many character clothing options 
-(emphasis on clothing choices having in universe rewards and consiquences)
+Design Pillars:
+- Convenient crafting UI with minimal time wasted on repetitive tasks and juggling space.
+- The world becomes more organized, clean, and beautiful as the player interacts with it. 
+- Emphasis on clothing choices having in universe rewards and consiquences
 
 
 ## Setup

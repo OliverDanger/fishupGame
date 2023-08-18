@@ -1,6 +1,8 @@
 import Ocean from "./tiles/Ocean";
 import Sand from "./tiles/Sand";
 
+import "../styles/Map.scss";
+
 const mapJSON =
   [
     {
@@ -43,7 +45,7 @@ const tileComponents = {
   1: Sand,
 };
 
-function Map() {
+const Map = function() {
   // Find the maximum x and y values to determine grid size
   const maxX = Math.max(...mapJSON.map(tile => tile.x)) + 1;
   const maxY = Math.max(...mapJSON.map(tile => tile.y)) + 1;
@@ -58,11 +60,11 @@ function Map() {
   });
 
   return (
-    <div className="Map">
+    <div className="map">
       {grid.map((row, rowIndex) => (
-        <div key={rowIndex} className="MapRow">
+        <div key={rowIndex} className="mapRow">
           {row.map((TileComponent, columnIndex) => (
-            <div key={columnIndex} className="MapTile">
+            <div key={columnIndex} className="mapTile">
               {TileComponent && <TileComponent />}
             </div>
           ))}
@@ -70,6 +72,6 @@ function Map() {
       ))}
     </div>
   );
-}
+};
 
 export default Map;
