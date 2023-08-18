@@ -1,3 +1,6 @@
+import React, { useState, useEffect } from "react";
+
+
 import Ocean from "./tiles/Ocean";
 import Sand from "./tiles/Sand";
 
