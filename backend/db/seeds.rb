@@ -68,7 +68,7 @@ items = Item.create!([
   },
   {
     name: "Sand",
-    description: "It's so fine it feels like dust when it's dry",
+    description: "It's so fine it feels like dust when it's dry.",
     melting_point: 255.55,
     base_value: 0.10,
     weight: 0.33,
@@ -78,7 +78,7 @@ items = Item.create!([
   },
   {
     name: "Sea Glass",
-    description: "It's so fine it feels like dust when it's dry",
+    description: "Shiny and round, it's perfectly smooth all over.",
     melting_point: 255.55,
     base_value: 0.10,
     weight: 0.33,
@@ -88,29 +88,26 @@ items = Item.create!([
   }
 ])
 
+puts "Items created!"
+
 puts "Creating Map..."
 
 Tile.destroy_all
 
-tiles = Tile.create!([
-  {
-    x: 0,
-    y: 0,
-    type_number: 0,
-  },
-  {
-    x: 1,
-    y: 0,
-    type_number: 0,
-  },
-  {
-    x: 0,
-    y: 1,
-    type_number: 0,
-  },
-  {
-    x: 1,
-    y: 1,
-    type_number: 1,
-  }
-])
+# Create the ocean tiles (x: 0-19, y: 0-19)
+(0..19).each do |x|
+  (0..19).each do |y|
+    tile = Tile.find_or_initialize_by(x: x, y: y)
+    tile.update!(type_number: 0)  # Ocean tile type
+  end
+end
+
+# Create the smaller island tiles (x: 7-12, y: 7-12)
+(7..12).each do |x|
+  (7..12).each do |y|
+    tile = Tile.find_or_initialize_by(x: x, y: y)
+    tile.update!(type_number: 1)  # Sand tile type for the island
+  end
+end
+
+puts "Map created!"
