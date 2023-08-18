@@ -1,3 +1,6 @@
+import Ocean from "./tiles/Ocean";
+import Sand from "./tiles/Sand";
+
 const mapJSON =
   [
     {
@@ -34,15 +37,37 @@ const mapJSON =
     }
   ];
 
-const tileTypes = {
-  1: 'Ocean',
-  2: 'Sand',
+// all tile component names must be added here
+const tileComponents = {
+  0: Ocean,
+  1: Sand,
 };
 
 function Map() {
+  // Find the maximum x and y values to determine grid size
+  const maxX = Math.max(...mapJSON.map(tile => tile.x)) + 1;
+  const maxY = Math.max(...mapJSON.map(tile => tile.y)) + 1;
+
+  // Create a 2D array to represent the grid
+  const grid = Array.from({ length: maxY }, () => Array(maxX).fill(null));
+
+  // Populate the grid with tile components
+  mapJSON.forEach(tile => {
+    const { x, y, type_number } = tile;
+    grid[y][x] = tileComponents[type_number];
+  });
+
   return (
     <div className="Map">
-      <h1> this is the map!</h1>
+      {grid.map((row, rowIndex) => (
+        <div key={rowIndex} className="MapRow">
+          {row.map((TileComponent, columnIndex) => (
+            <div key={columnIndex} className="MapTile">
+              {TileComponent && <TileComponent />}
+            </div>
+          ))}
+        </div>
+      ))}
     </div>
   );
 }
