@@ -8,12 +8,11 @@
   align-items: center;
   background-color: olive;
   border: 2pt solid yellow;
-  box-sizing: border-box;
 
-  h1 {
-    font-size: calc(2vw + 2vh); /* Adjust font size based on viewport dimensions */
-    margin: 0; /* Remove default margin */
-    padding: 0; /* Remove default padding */
-    text-align: center; /* Center the text horizontally */
+  .tile-heading {
+    font-size: calc(1vw + 1vh); 
+    margin: 0; 
+    padding: 0; 
+    text-align: center;
   }
 }
