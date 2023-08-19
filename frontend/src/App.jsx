@@ -1,13 +1,16 @@
-
 import './App.css';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+
+
+//components
 import Map from './components/Map';
 
-function App() {
+const App = () => {
   return (
     <>
       <Map />
     </>
   );
-}
+};
 
 export default App;
