@@ -6,6 +6,6 @@ const Sand = function({ x, y }) {
       <p>Sand at ({x}, {y})</p>
     </div>
   );
-}
+};
 
 export default Sand;
