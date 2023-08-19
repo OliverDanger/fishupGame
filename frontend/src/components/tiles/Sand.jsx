@@ -1,11 +1,11 @@
 import "../../styles/tiles/Sand.scss";
 
-const Sand = function() {
+const Sand = function({ x, y }) {
   return (
     <div className="sand">
-      <h1 className="tile-heading">Sand</h1>
+      <p>Sand at ({x}, {y})</p>
     </div>
   );
-};
+}
 
 export default Sand;

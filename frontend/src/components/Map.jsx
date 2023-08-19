@@ -47,7 +47,7 @@ const Map = function() {
         <div key={rowIndex} className="mapRow">
           {row.map((TileComponent, columnIndex) => (
             <div key={columnIndex} className="mapTile">
-              {TileComponent && <TileComponent />}
+              {TileComponent && <TileComponent x={columnIndex} y={rowIndex} />}
             </div>
           ))}
         </div>

@@ -1,11 +1,11 @@
 import "../../styles/tiles/Ocean.scss";
 
-const Ocean = function() {
+const Ocean = function({ x, y }) {
   return (
     <div className="ocean">
-      <h1 className="tile-heading">Ocean</h1>
+      <p>Ocean at ({x}, {y})</p>
     </div>
   );
-}
+};
 
 export default Ocean;
