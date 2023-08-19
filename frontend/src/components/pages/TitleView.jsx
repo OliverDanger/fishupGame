@@ -1,3 +1,5 @@
+import "../../styles/TitleView.scss";
+
 const TitleView = () => {
   return (
     <div className="title-view">
