@@ -1,18 +1,19 @@
 .title-view {
   width: 100%;
   height: 100%;
-  color: white;
+  color: darkolivegreen;
+  font-family: 'Courier New', Courier, monospace, sans-serif;
 
 
   header {
-    background-color: aqua;
+    background-color: steelblue;
     z-index: 1;
     width: 100%;
     height: 18%;
   }
 
-  section {
-    background-color: rgb(0, 68, 68);
+  .background-container {
+    background-color: darkturquoise;
     width: 100%;
     height: 82%;
     display: flex;
@@ -21,21 +22,44 @@
     justify-content: center;
   }
 
+  .title-card {
+    background-color: sandybrown;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 6pt 24pt 12pt 24pt;
+    border-radius: 5%;
+    border-top: 5pt solid peru;
+    border-bottom: 5pt solid peru;
+  }
+
   h1 {
     font-size: 5rem;
     margin: 0;
     padding: 1rem 0;
     text-align: center;
-    text-shadow: 2px 2px 4px aqua;
-    font-family: fantasy, sans-serif;
+    text-shadow: 2px 2px 4px rosybrown;
   }
 
   p {
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin: 0;
     padding: 0.5rem 0;
     text-align: center;
-    color: aqua;
-    font-family: fantasy, sans-serif;
+    color: darkolivegreen;
+    text-shadow: rosybrown
+  }
+
+  button {
+    background-color: darkolivegreen;
+    border-color: rosybrown;
+    transition: background-color 0.3s ease-in-out;
+    transition: border-color 0.3s ease-in-out;
+
+    &:hover {
+      background-color: yellowgreen;
+      border-color: darkolivegreen;
+    }
   }
 }
