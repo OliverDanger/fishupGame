@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import { FixedSizeGrid as Grid } from "react-window";
 import Ocean from "./tiles/Ocean";
 import Sand from "./tiles/Sand";
 
 import "../styles/Map.scss";
 
 
+
+// Constants
+
+const tileSize = 100;
+const windowWidth = 600;
+const windowHeight = 400;
 
 // all tile component names must be added here
 const tileComponents = {
@@ -17,6 +23,7 @@ const tileComponents = {
 const Map = function() {
 
   const [mapData, setMapData] = useState([]);
+  
   //get user's map data from the server
   useEffect(() => {
     axios.get("http://localhost:3001/api/tiles")
@@ -43,15 +50,29 @@ const Map = function() {
 
   return (
     <div className="map">
-      {grid.map((row, rowIndex) => (
-        <div key={rowIndex} className="mapRow">
-          {row.map((TileComponent, columnIndex) => (
-            <div key={columnIndex} className="mapTile">
-              {TileComponent && <TileComponent x={columnIndex} y={rowIndex} />}
+      <Grid
+        columnCount={maxX}
+        rowCount={maxY}
+        columnWidth={tileSize}
+        rowHeight={tileSize}
+        height={windowHeight}
+        width={windowWidth}
+      >
+        {({ columnIndex, rowIndex, style }) => {
+          const TileComponent = grid[rowIndex][columnIndex];
+          return (
+            <div
+              className="mapTile"
+              style={style}
+              key={`${rowIndex}-${columnIndex}`}
+            >
+              {TileComponent && (
+                <TileComponent x={columnIndex} y={rowIndex} />
+              )}
             </div>
-          ))}
-        </div>
-      ))}
+          );
+        }}
+      </Grid>
     </div>
   );
 };
