@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "../../styles/TitleView.scss";
+import "../../styles/pages/TitleView.scss";
 
 const TitleView = () => {
   return (

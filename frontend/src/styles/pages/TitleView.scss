@@ -7,6 +7,7 @@
 
   header {
     background-color: steelblue;
+    border-top: 5pt solid yellow;
     z-index: 1;
     width: 100%;
     height: 18%;
@@ -39,7 +40,7 @@
     margin: 0;
     padding: 1rem 0;
     text-align: center;
-    text-shadow: 2px 2px 4px rosybrown;
+    text-shadow: 2px 2px 4px peru;
   }
 
   p {
@@ -48,18 +49,18 @@
     padding: 0.5rem 0;
     text-align: center;
     color: darkolivegreen;
-    text-shadow: rosybrown
+    text-shadow: peru;
   }
 
   button {
     background-color: darkolivegreen;
-    border-color: rosybrown;
+    border: 2pt solid peru;
     transition: background-color 0.3s ease-in-out;
     transition: border-color 0.3s ease-in-out;
 
     &:hover {
       background-color: yellowgreen;
-      border-color: darkolivegreen;
+      border-color: orange;
     }
   }
 }

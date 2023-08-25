@@ -1,10 +1,16 @@
 import Map from "../Map";
+import "../../styles/pages/MapView.scss";
 
 const MapView = function() {
   return (
-    <>
-      <Map />
-    </>
+    <div className="map-view">
+      <div className="map-container">
+        <div className="player"></div>
+        <div className="map-content">
+          <Map />
+        </div>
+      </div>
+    </div>
   );
 };
 

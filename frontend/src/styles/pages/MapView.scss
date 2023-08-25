@@ -1,0 +1,38 @@
+.map-view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  height: 100vh; /* Ensure the container takes up at least the viewport height */
+  background-color: lightgray; /* Background color for visualization */
+}
+
+.map-container {
+  height: calc(100vh - 40px); /* Take up full width of the container */
+  width: calc(100vw - 40px); /* Set a maximum width for the container */
+  padding: 20px; /* Padding on all sides */
+  box-sizing: border-box; /* Include padding in the container's width */
+  border-radius: 20px;
+  overflow: hidden; /* Hide overflow */
+  background-color: white; /* Container background color */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Add shadow */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.map-content {
+  overflow: auto; /* Allow content to scroll */
+  box-sizing: border-box;
+}
+
+.player {
+  position: absolute;
+  width: 45px;
+  height: 25px;
+  background-color: firebrick;
+  border-radius: 25%;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
