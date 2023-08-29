@@ -11,8 +11,6 @@ import "../styles/Map.scss";
 // Constants
 
 const tileSize = 100;
-const windowWidth = 600;
-const windowHeight = 400;
 
 // all tile component names must be added here
 const tileComponents = {
@@ -20,10 +18,11 @@ const tileComponents = {
   1: Sand,
 };
 
-const Map = function() {
+const Map = function({ windowDimensions }) {
 
   const [mapData, setMapData] = useState([]);
-  
+
+
   //get user's map data from the server
   useEffect(() => {
     axios.get("http://localhost:3001/api/tiles")
@@ -55,8 +54,8 @@ const Map = function() {
         rowCount={maxY}
         columnWidth={tileSize}
         rowHeight={tileSize}
-        height={windowHeight}
-        width={windowWidth}
+        height={windowDimensions.height}
+        width={windowDimensions.width}
       >
         {({ columnIndex, rowIndex, style }) => {
           const TileComponent = grid[rowIndex][columnIndex];
