@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 const MapView = function() {
 
-  const [playerPosition, setPlayerPosition] = useState({x: 0, y: 0});
+  const [playerPosition, setPlayerPosition] = useState({row: 0, column: 0});
 
   const [windowDimensions, setWindowDimensions] = useState({
     width: window.innerWidth,

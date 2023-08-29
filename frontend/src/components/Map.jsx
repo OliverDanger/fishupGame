@@ -54,8 +54,8 @@ const Map = function({ windowDimensions }) {
         rowCount={maxY}
         columnWidth={tileSize}
         rowHeight={tileSize}
-        height={windowDimensions.height}
-        width={windowDimensions.width}
+        height={windowDimensions.height - 25}
+        width={windowDimensions.width - 25}
       >
         {({ columnIndex, rowIndex, style }) => {
           const TileComponent = grid[rowIndex][columnIndex];

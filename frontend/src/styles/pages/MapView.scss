@@ -3,8 +3,17 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  height: 100vh; /* Ensure the container takes up at least the viewport height */
-  background-color: lightgray; /* Background color for visualization */
+  height: 100vh; 
+  background-color: lightgray;
+}
+
+.map-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  border-radius: 2vh;
+  overflow: hidden;
 }
 
 .player {
