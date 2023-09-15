@@ -10,7 +10,7 @@ const TitleView = () => {
           <h1>Fish-Up Game</h1>
           <p>by Oliver Danger Dixon</p>
           <Link to={'/map'}>
-            <button>Map</button>
+            <button>Start</button>
           </Link>
         </section>
       </div>
