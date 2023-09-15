@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { FixedSizeGrid as Grid } from "react-window";
 import Ocean from "./tiles/Ocean";
@@ -12,18 +12,20 @@ import "../styles/Map.scss";
 
 const tileSize = 100;
 
-// all tile component names must be added here
+// all tile component names must be named aand numbered here
 const tileComponents = {
   0: Ocean,
   1: Sand,
 };
 
-const Map = function({ windowDimensions }) {
+const Map = function({ windowDimensions, playerPosition, setPlayerPosition }) {
 
   const [mapData, setMapData] = useState([]);
 
 
   //get user's map data from the server
+  //temp location
+
   useEffect(() => {
     axios.get("http://localhost:3001/api/tiles")
       .then(res => {
@@ -64,10 +66,16 @@ const Map = function({ windowDimensions }) {
               className="mapTile"
               style={style}
               key={`${rowIndex}-${columnIndex}`}
+              onClick={() => {
+                if (
+                  rowIndex === playerPosition.row ||
+                  columnIndex === playerPosition.column
+                ) {
+                  setPlayerPosition({ row: rowIndex, column: columnIndex });
+                }
+              }}
             >
-              {TileComponent && (
-                <TileComponent x={columnIndex} y={rowIndex} />
-              )}
+              {TileComponent && (<TileComponent x={rowIndex} y={columnIndex} />)}
             </div>
           );
         }}

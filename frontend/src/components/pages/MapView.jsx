@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 const MapView = function() {
 
   const [playerPosition, setPlayerPosition] = useState({row: 0, column: 0});
+  const [targetPosition, setTargetPosition] = useState(playerPosition);
 
   const [windowDimensions, setWindowDimensions] = useState({
     width: window.innerWidth,
@@ -29,7 +30,13 @@ const MapView = function() {
     <div className="map-view">
       <div className="map-container">
         <div className="player"></div>
-        <Map windowDimensions={ windowDimensions } playerPosition={playerPosition}/>
+        <Map
+          windowDimensions={ windowDimensions }
+          playerPosition={playerPosition}
+          setPlayerPosition={setPlayerPosition}
+          targetPosition={targetPosition}
+          setTargetPosition={setTargetPosition}
+        />
       </div>
     </div>
   );
