@@ -21,7 +21,11 @@ const tileComponents = {
 const Map = function({ windowDimensions }) {
 
   const [mapData, setMapData] = useState([]);
-
+  const [targetTile, setTargetTile] = useState({ x: 12, y: 12 });
+  // Set the initial scroll position based on the targetTile
+  const initialScrollLeft = targetTile.x * tileSize;
+  const initialScrollTop = targetTile.y * tileSize;
+  const [scrollPosition, setScrollPosition] = useState({ scrollLeft: initialScrollLeft, scrollTop: initialScrollTop });
 
   //get user's map data from the server
   //temp location
@@ -52,12 +56,31 @@ const Map = function({ windowDimensions }) {
   return (
     <div className="map">
       <Grid
+        useIsScrolling={false}
         columnCount={maxX}
         rowCount={maxY}
         columnWidth={tileSize}
         rowHeight={tileSize}
         height={windowDimensions.height - 25}
         width={windowDimensions.width - 25}
+        onItemsRendered={({ visibleColumnStartIndex, visibleRowStartIndex }) => {
+          // Calculate the center tile coordinates
+          const centerX = Math.floor(maxX / 2);
+          const centerY = Math.floor(maxY / 2);
+
+
+          // Calculate the new scroll position based on the targetTile coordinates
+          const newScrollLeft = targetTile.x * tileSize;
+          const newScrollTop = targetTile.y * tileSize;
+
+          // Only update the scroll position if it has changed
+          if (newScrollLeft !== scrollPosition.scrollLeft || newScrollTop !== scrollPosition.scrollTop) {
+            setScrollPosition({ scrollLeft: newScrollLeft, scrollTop: newScrollTop });
+          }
+        }}
+        // Set the initial scroll position
+        scrollLeft={scrollPosition.scrollLeft}
+        scrollTop={scrollPosition.scrollTop}
       >
         {({ columnIndex, rowIndex, style }) => {
           const TileComponent = grid[rowIndex][columnIndex];
@@ -67,20 +90,22 @@ const Map = function({ windowDimensions }) {
               style={style}
               key={`${rowIndex}-${columnIndex}`}
               onClick={() => {
-                if (
-                  rowIndex === playerPosition.row ||
-                  columnIndex === playerPosition.column
-                ) {
-                  setPlayerPosition({ row: rowIndex, column: columnIndex });
-                }
+                // Calculate new scroll position based on clicked tile's coordinates
+                const newScrollLeft = columnIndex * tileSize;
+                const newScrollTop = rowIndex * tileSize;
+
+                // Set the new scroll position
+                setScrollPosition({ scrollLeft: newScrollLeft, scrollTop: newScrollTop });
+                console.log('✨', rowIndex, columnIndex);
+                console.log('🐟', scrollPosition);
               }}
             >
               {TileComponent && (<TileComponent x={rowIndex} y={columnIndex} />)}
             </div>
           );
         }}
-      </Grid>
-    </div>
+      </Grid >
+    </div >
   );
 };
 
