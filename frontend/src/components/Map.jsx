@@ -18,7 +18,7 @@ const tileComponents = {
   1: Sand,
 };
 
-const Map = function({ windowDimensions, playerPosition, setPlayerPosition }) {
+const Map = function({ windowDimensions }) {
 
   const [mapData, setMapData] = useState([]);
 
