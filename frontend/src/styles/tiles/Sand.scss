@@ -1,4 +1,5 @@
 // Sand Tile Component Style
+@import '../variables';
 
 .sand {
   width: 100%;
@@ -6,7 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: olive;
-  border: 1pt solid yellow;
+  background-color: $sand-color-1;
+  border: 1pt solid $sand-color-2;
 
 }

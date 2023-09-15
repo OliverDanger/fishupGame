@@ -5,9 +5,6 @@ import { Link } from "react-router-dom";
 
 const MapView = function() {
 
-  const [playerPosition, setPlayerPosition] = useState({ row: 0, column: 0 });
-  const [targetPosition, setTargetPosition] = useState(playerPosition);
-
   const [windowDimensions, setWindowDimensions] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
@@ -33,10 +30,6 @@ const MapView = function() {
         <div className="player"></div>
         <Map
           windowDimensions={windowDimensions}
-          playerPosition={playerPosition}
-          setPlayerPosition={setPlayerPosition}
-          targetPosition={targetPosition}
-          setTargetPosition={setTargetPosition}
         />
       </div>
       <div className="boat-nav">
