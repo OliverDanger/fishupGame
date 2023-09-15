@@ -1,5 +1,6 @@
 .map-view {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
@@ -25,4 +26,10 @@
   border-radius: 25%;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+.boat-nav {
+  width: 98%;
+  display: flex;
+  justify-content: space-between;
 }

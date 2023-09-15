@@ -1,10 +1,11 @@
 import Map from "../Map";
 import "../../styles/pages/MapView.scss";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const MapView = function() {
 
-  const [playerPosition, setPlayerPosition] = useState({row: 0, column: 0});
+  const [playerPosition, setPlayerPosition] = useState({ row: 0, column: 0 });
   const [targetPosition, setTargetPosition] = useState(playerPosition);
 
   const [windowDimensions, setWindowDimensions] = useState({
@@ -31,12 +32,20 @@ const MapView = function() {
       <div className="map-container">
         <div className="player"></div>
         <Map
-          windowDimensions={ windowDimensions }
+          windowDimensions={windowDimensions}
           playerPosition={playerPosition}
           setPlayerPosition={setPlayerPosition}
           targetPosition={targetPosition}
           setTargetPosition={setTargetPosition}
         />
+      </div>
+      <div className="boat-nav">
+        <Link to={'/cabin'}>
+          <button>Cabin</button>
+        </Link>
+        <Link to={'/below'}>
+          <button>Below Deck</button>
+        </Link>
       </div>
     </div>
   );
