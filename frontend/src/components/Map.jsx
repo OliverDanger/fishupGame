@@ -1,17 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { FixedSizeGrid as Grid } from "react-window";
-import Ocean from "./tiles/Ocean";
-import Sand from "./tiles/Sand";
+import {getTileComponent} from '../utils/TileList.jsx';
 
 import "../styles/Map.scss";
 
 const tileSize = 100;
-
-const tileComponents = {
-  0: Ocean,
-  1: Sand,
-};
 
 const Map = function ({ windowDimensions }) {
   const [mapData, setMapData] = useState([]);
@@ -33,7 +27,7 @@ const Map = function ({ windowDimensions }) {
 
   mapData.forEach(tile => {
     const { x, y, type_number } = tile;
-    grid[y][x] = tileComponents[type_number];
+    grid[y][x] = getTileComponent(type_number);
   });
 
   return (
