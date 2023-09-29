@@ -11,6 +11,13 @@ const Map = function({ windowDimensions }) {
   const [mapData, setMapData] = useState([]);
   const [focusedTile, setFocusedTile] = useState({ x: 10, y: 10 });
   const gridRef = useRef(null);
+  const scrollGrid = (x, y) => {
+    gridRef.current.scrollToItem({
+      columnIndex: x,
+      rowIndex: y,
+      align: "center",
+    });
+  };
 
   useEffect(() => {
     axios.get("http://localhost:3001/api/tiles")
@@ -58,13 +65,10 @@ const Map = function({ windowDimensions }) {
 
     setFocusedTile({ x: newX, y: newY });
     console.log('✨', focusedTile);
+    console.log(event);
 
     // Scroll to the new focused tile
-    gridRef.current.scrollToItem({
-      columnIndex: newX,
-      rowIndex: newY,
-      align: "center",
-    });
+    scrollGrid(newX, newY);
   };
 
   useEffect(() => {
