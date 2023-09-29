@@ -98,7 +98,7 @@ Tile.destroy_all
 (0..19).each do |x|
   (0..19).each do |y|
     tile = Tile.find_or_initialize_by(x: x, y: y)
-    tile.update!(type_number: 0)  # Ocean tile type
+    tile.update!(type_number: 1)  # Ocean tile type
   end
 end
 
@@ -106,7 +106,7 @@ end
 (7..12).each do |x|
   (7..12).each do |y|
     tile = Tile.find_or_initialize_by(x: x, y: y)
-    tile.update!(type_number: 1)  # Sand tile type for the island
+    tile.update!(type_number: 2)  # Sand tile type for the island
   end
 end
 
