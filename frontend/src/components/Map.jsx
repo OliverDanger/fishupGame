@@ -12,6 +12,8 @@ const Map = function({ windowDimensions }) {
   const [focusedTile, setFocusedTile] = useState({ x: 10, y: 10 });
   const gridRef = useRef(null);
   const scrollGrid = (x, y) => {
+    console.log('🌈 Scrolling to:', x, y);
+    console.log(windowDimensions);
     gridRef.current.scrollToItem({
       columnIndex: x,
       rowIndex: y,
@@ -19,6 +21,7 @@ const Map = function({ windowDimensions }) {
     });
   };
 
+  // fetch map data
   useEffect(() => {
     axios.get("http://localhost:3001/api/tiles")
       .then(res => {
@@ -27,6 +30,11 @@ const Map = function({ windowDimensions }) {
       .catch(error => {
         console.error("Error fetching map data:", error);
       });
+  }, []);
+
+  // set initial player position
+  useEffect(() => {
+    scrollGrid(focusedTile.x, focusedTile.y);
   }, []);
 
   // calculate the max dimensions of the current map, and create 2d matrix of arrays to match
@@ -65,7 +73,6 @@ const Map = function({ windowDimensions }) {
 
     setFocusedTile({ x: newX, y: newY });
     console.log('✨', focusedTile);
-    console.log(event);
 
     // Scroll to the new focused tile
     scrollGrid(newX, newY);
@@ -85,6 +92,7 @@ const Map = function({ windowDimensions }) {
     <div className="map">
       <Grid
         ref={gridRef}
+        className="map-grid"
         columnCount={maxXCoordinate}
         rowCount={maxYCoordinate}
         columnWidth={tileSize}
@@ -92,17 +100,17 @@ const Map = function({ windowDimensions }) {
         height={windowDimensions.height - mapWindowMargin}
         width={windowDimensions.width - mapWindowMargin}
         initialScrollLeft={focusedTile.x * tileSize}
-        initialScrollTop={focusedTile.y * tileSize}
+        initialScrollTop={(maxYCoordinate - focusedTile.y - 1) * tileSize} // Reverse the initialScrollTop calculation
       >
         {({ columnIndex, rowIndex, style }) => {
           const TileComponent = grid[rowIndex][columnIndex];
           return (
             <div
-              className={`mapTile ${focusedTile.x === columnIndex && focusedTile.y === rowIndex ? 'focused' : ''}`}
+              className={`mapTile ${focusedTile.x === columnIndex && maxYCoordinate - focusedTile.y - 1 === rowIndex ? 'focused' : ''}`}
               style={style}
               key={`${rowIndex}-${columnIndex}`}
             >
-              {TileComponent && (<TileComponent x={rowIndex} y={columnIndex} />)}
+              {TileComponent && (<TileComponent x={columnIndex} y={maxYCoordinate - rowIndex - 1} />)}
             </div>
           );
         }}
