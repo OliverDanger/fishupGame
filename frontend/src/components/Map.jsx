@@ -11,15 +11,6 @@ const Map = function({ windowDimensions }) {
   const [mapData, setMapData] = useState([]);
   const [focusedTile, setFocusedTile] = useState({ x: 10, y: 10 });
   const gridRef = useRef(null);
-  const scrollGrid = (x, y) => {
-    console.log('🌈 Scrolling to:', x, y);
-    console.log(windowDimensions);
-    gridRef.current.scrollToItem({
-      columnIndex: x,
-      rowIndex: y,
-      align: "center",
-    });
-  };
 
   // fetch map data
   useEffect(() => {
@@ -47,6 +38,17 @@ const Map = function({ windowDimensions }) {
     const { x, y, type_number } = tile;
     grid[y][x] = getTileComponent(type_number);
   });
+
+  // function to handle scrolling the map
+  const scrollGrid = (x, y) => {
+    console.log('🌈 Scrolling to:', x, y);
+    console.log(windowDimensions);
+    gridRef.current.scrollToItem({
+      columnIndex: x,
+      rowIndex: maxYCoordinate - y - 1,
+      align: "center",
+    });
+  };
 
   // function to handle the key presses
   const handleArrowKey = (event) => {
