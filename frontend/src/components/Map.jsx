@@ -12,6 +12,7 @@ const Map = function({ windowDimensions }) {
   const [focusedTile, setFocusedTile] = useState({ x: 10, y: 10 });
   const gridRef = useRef(null);
 
+
   // fetch map data
   useEffect(() => {
     axios.get("http://localhost:3001/api/tiles")
@@ -28,20 +29,10 @@ const Map = function({ windowDimensions }) {
     scrollGrid(focusedTile.x, focusedTile.y);
   }, []);
 
-  // Calculate maximum negative x and y coordinates for buffer zone
-  const bufferX = Math.ceil(windowDimensions.width / tileSize);
-  const bufferY = Math.ceil(windowDimensions.height / tileSize);
-
-  // Calculate maxXCoordinate and maxYCoordinate considering buffer tiles
-  const maxXCoordinate = Math.max(...mapData.map(tile => tile.x)) + (bufferX * 2) + 1;
-  const maxYCoordinate = Math.max(...mapData.map(tile => tile.y)) + (bufferY * 2) + 1;
-
-  // Adjust the grid to include negative coordinates for buffer zone
+  // calculate the max dimensions of the current map, and create 2d matrix of arrays to match
+  const maxXCoordinate = Math.max(...mapData.map(tile => tile.x)) + 1;
+  const maxYCoordinate = Math.max(...mapData.map(tile => tile.y)) + 1;
   const grid = Array.from({ length: maxYCoordinate }, () => Array(maxXCoordinate).fill(null));
-
-  // Calculate initialScrollLeft and initialScrollTop based on negative coordinates
-  const initialScrollLeft = Math.max(0, (focusedTile.x - bufferX) * tileSize);
-  const initialScrollTop = Math.max(0, (maxYCoordinate - focusedTile.y - 1 - bufferY) * tileSize);
 
   // map the map data into the grid
   mapData.forEach(tile => {
@@ -105,14 +96,15 @@ const Map = function({ windowDimensions }) {
       <Grid
         ref={gridRef}
         className="map-grid"
+        style={{ overflow: 'hidden' }}
         columnCount={maxXCoordinate}
         rowCount={maxYCoordinate}
         columnWidth={tileSize}
         rowHeight={tileSize}
         height={windowDimensions.height - mapWindowMargin}
         width={windowDimensions.width - mapWindowMargin}
-        initialScrollLeft={initialScrollLeft}
-        initialScrollTop={initialScrollTop}
+        initialScrollLeft={focusedTile.x * tileSize}
+        initialScrollTop={(maxYCoordinate - focusedTile.y - 1) * tileSize} // Reverse the initialScrollTop calculation
       >
         {({ columnIndex, rowIndex, style }) => {
           const TileComponent = grid[rowIndex][columnIndex];
