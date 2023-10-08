@@ -43,7 +43,7 @@ const Map = function({ windowDimensions }) {
   // function to handle scrolling the map
   const scrollGrid = (x, y) => {
     console.log('🌈 Scrolling to:', x, y);
-    console.log(windowDimensions);
+    console.log(windowDimensions, maxXCoordinate, maxYCoordinate);
     gridRef.current.scrollToItem({
       columnIndex: x,
       rowIndex: maxYCoordinate - y - 1,
@@ -59,7 +59,6 @@ const Map = function({ windowDimensions }) {
     switch (event.key) {
       case "ArrowLeft":
         newX--;
-        console.log('left!');
         break;
       case "ArrowRight":
         newX++;
@@ -79,6 +78,8 @@ const Map = function({ windowDimensions }) {
 
     // Scroll to the new focused tile
     scrollGrid(newX, newY);
+
+    
   };
 
   useEffect(() => {

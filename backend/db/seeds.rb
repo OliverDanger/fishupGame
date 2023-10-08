@@ -94,9 +94,9 @@ puts "Creating Map..."
 
 Tile.destroy_all
 
-# Create the ocean tiles (x: 0-19, y: 0-19)
-(0..19).each do |x|
-  (0..19).each do |y|
+# Create the ocean tiles (x: 0-40, y: 0-40)
+(0..40).each do |x|
+  (0..40).each do |y|
     tile = Tile.find_or_initialize_by(x: x, y: y)
     tile.update!(type_number: 1)  # Ocean tile type
   end
