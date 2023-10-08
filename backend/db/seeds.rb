@@ -90,7 +90,7 @@ items = Item.create!([
 
 puts "Items created!"
 
-puts "Creating Map..."
+puts "Creating Ocean..."
 
 Tile.destroy_all
 
@@ -101,6 +101,8 @@ Tile.destroy_all
     tile.update!(type_number: 1)  # Ocean tile type
   end
 end
+
+puts "Creating Island..."
 
 # Create the smaller island tiles (x: 7-12, y: 7-12)
 (7..12).each do |x|
