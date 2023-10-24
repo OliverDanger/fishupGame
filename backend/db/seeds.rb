@@ -113,3 +113,80 @@ puts "Creating Island..."
 end
 
 puts "Map created!"
+
+puts "Creating Clothes..."
+
+ClothingArticle.destroy_all
+
+# available clothing colours: 
+# - peach
+# - cherry 
+# - orange
+# - lemon
+# - lime
+# - pine
+# - sky
+# - ocean
+# - lavender
+# - grape
+# - cloud
+# - space
+# - slate
+# - chestnut
+
+clothes = ClothingArticle.create!([
+  {
+    name: "White T-shirt",
+    description: "A cozy and clean white t-shirt",
+    colour: "cloud",
+    fancy: 1,
+    cool: 1,
+    eccentric: -1,
+    camouflage: -1,
+    set: nil,
+    hat: false,
+    face_upper: false,
+    face_lower: false,
+    neck: false,
+    body_upper: true,
+    body_lower: true,
+    arm_upper: true,
+    arm_lower: false,
+    hand_left: false,
+    hand_right: false,
+    jacket: false,
+    legs_upper: false,
+    legs_lower: false,
+    socks: false,
+    shoes: false,
+    img: "https://www.torontotees.com/wp-content/uploads/2022/09/men-shirt.png"
+  },
+  {
+    name: "Black T-shirt",
+    description: "A cozy and clean white t-shirt",
+    colour: "space",
+    fancy: 0,
+    cool: 1,
+    eccentric: -1,
+    camouflage: 1,
+    set: nil,
+    hat: false,
+    face_upper: false,
+    face_lower: false,
+    neck: false,
+    body_upper: true,
+    body_lower: true,
+    arm_upper: true,
+    arm_lower: false,
+    hand_left: false,
+    hand_right: false,
+    jacket: false,
+    legs_upper: false,
+    legs_lower: false,
+    socks: false,
+    shoes: false,
+    img: "https://dixxon.ca/cdn/shop/products/dixxon-perfect-blank-tee-black-1_1200x1200.png?v=1680554505"
+  },
+])
+
+puts "Clothes created!"
