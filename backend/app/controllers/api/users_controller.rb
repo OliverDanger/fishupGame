@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Api::UsersController < ApplicationController
   def get_user_info
     @user = User.find_by(username: params[:username])
 
