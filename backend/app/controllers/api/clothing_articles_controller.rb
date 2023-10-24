@@ -1,12 +1,17 @@
 class Api::ClothingArticlesController < ApplicationController
   def index
-    clothing_article_ids = params[:ids]
-    @clothing_articles = ClothingArticle.where(id: clothing_article_ids)
+
+    if params[:ids].present?
+      @clothing_articles = ClothingArticle.where( id: params[:ids])
+    else
+      @clothing_articles = ClothingArticle.all
+    end
+
 
     if @clothing_articles.any?
       render json: @clothing_articles, status: :ok
     else
-      render json: { message: 'No clothing articles found witht he provided IDs'}, status: :not_found
+      render json: { message: 'No clothing articles found'}, status: :not_found
     end
   end
 end
