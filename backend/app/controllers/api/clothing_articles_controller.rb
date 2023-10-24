@@ -1,12 +1,7 @@
 class Api::ClothingArticlesController < ApplicationController
   def index
-
-    if params[:ids].present?
-      @clothing_articles = ClothingArticle.where("id IN (#{params[:ids]})")
-    else
-      @clothing_articles = ClothingArticle.all
-    end
-
+    # sets clothing_articles to either the specified clothes by their ids, or all clothes if no ids are given
+    @clothing_articles = params[:ids].present? ? ClothingArticle.where("id IN (#{params[:ids]})") : ClothingArticle.all
 
     if @clothing_articles.any?
       render json: @clothing_articles, status: :ok
