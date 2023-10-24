@@ -190,3 +190,16 @@ clothes = ClothingArticle.create!([
 ])
 
 puts "Clothes created!"
+
+puts "Creating users..."
+
+User.destroy_all
+
+users = User.create!([
+  {
+    username: "Olly",
+    password: "ver",
+    x_coordinate: 3,
+    y_coordinate: 3,
+  },
+])
