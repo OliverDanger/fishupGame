@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :tiles, only: [:index]
+    resources :clothing_articles, only: [:index]
   end
   
 end
