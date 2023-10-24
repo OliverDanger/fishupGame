@@ -7,5 +7,13 @@ class ClothingArticle < ApplicationRecord
   validates :cool, numericality: true
   validates :eccentric, numericality: true
   validates :camouflage, numericality: true
+  validate :at_least_one_clothing_location
 
+  private
+
+  def at_least_one_clothing_location
+    unless hat || face_upper || face_lower || neck || body_upper || body_lower || arm_upper || arm_lower || hand_left || hand_right || jacket || legs_upper || legs_lower || socks || shoes
+      errors.add(:base, "At least one clothing item location must be true")
+    end
+  end
 end
