@@ -136,6 +136,7 @@ ClothingArticle.destroy_all
 
 clothes = ClothingArticle.create!([
   {
+    id: 1,
     name: "White T-shirt",
     description: "A cozy and clean white t-shirt",
     colour: "cloud",
@@ -162,6 +163,7 @@ clothes = ClothingArticle.create!([
     img: "https://www.torontotees.com/wp-content/uploads/2022/09/men-shirt.png"
   },
   {
+    id: 2,
     name: "Black T-shirt",
     description: "A cozy and clean white t-shirt",
     colour: "space",
@@ -197,6 +199,7 @@ User.destroy_all
 
 users = User.create!([
   {
+    id: 1,
     username: "Olly",
     password: "ver",
     x_coordinate: 3,
@@ -205,3 +208,22 @@ users = User.create!([
 ])
 
 puts "Users created!"
+
+puts "Owning Clothes for user: #{User.find_by( id: 1 ).username}..."
+
+# Creates owned clothes for the test user Olly (id #1)
+
+OwnedArticle.destroy_all
+
+owned_articles = OwnedArticle.create!([
+  {
+    user_id: 1,
+    clothing_article_id: 1,
+  },
+  {
+    user_id: 1,
+    clothing_article_id: 2,
+  }
+])
+
+puts "Clothes owned!"

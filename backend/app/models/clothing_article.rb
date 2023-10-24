@@ -16,4 +16,7 @@ class ClothingArticle < ApplicationRecord
       errors.add(:base, "At least one clothing item location must be true")
     end
   end
+
+  has_many :owned_articles
+  has_many :users, through: :owned_articles
 end
