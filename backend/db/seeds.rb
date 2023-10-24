@@ -203,3 +203,5 @@ users = User.create!([
     y_coordinate: 3,
   },
 ])
+
+puts "Users created!"
