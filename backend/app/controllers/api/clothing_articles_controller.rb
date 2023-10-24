@@ -2,7 +2,7 @@ class Api::ClothingArticlesController < ApplicationController
   def index
 
     if params[:ids].present?
-      @clothing_articles = ClothingArticle.where( id: params[:ids])
+      @clothing_articles = ClothingArticle.where("id IN (#{params[:ids]})")
     else
       @clothing_articles = ClothingArticle.all
     end
