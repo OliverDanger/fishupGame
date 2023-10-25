@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
+
+    # GET api/tiles gives all tiles
     resources :tiles, only: [:index]
+
+    # GET api/clothing_articles?ids=1,2,3,etc... gives selected clothing info by id
+    # GET api/clothing_articles gives all clothing info
     resources :clothing_articles, only: [:index]
+
+    # GET api/users/get_user_info?username=:username gives selected user info
     resources :users, only: [] do 
       collection do
         get 'get_user_info'
@@ -9,7 +16,7 @@ Rails.application.routes.draw do
     end
     resources :owned_articles, only: [:index]
 
-    # Custom route for the 'index' action of the OwnedArticlesController
+    # GET api/users/:user_id/owned_clothing gives selected user's owned clothing
     get 'users/:user_id/owned_clothing', to: 'owned_articles#index', as: 'user_owned_clothing'
   end
 end

@@ -9,4 +9,4 @@ class Api::ClothingArticlesController < ApplicationController
       render json: { message: 'No clothing articles found'}, status: :not_found
     end
   end
-ends
+end
