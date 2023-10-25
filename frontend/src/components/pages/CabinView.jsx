@@ -5,6 +5,9 @@ const CabinView = () => {
   return (
     <div className="cabin-view">
       <h1>Cabin</h1>
+      <Link to={'/cabin/closet'}>
+        <button>Open Closet</button>
+      </Link>
       <Link to={'/map'}>
         <button>Deck</button>
       </Link>
