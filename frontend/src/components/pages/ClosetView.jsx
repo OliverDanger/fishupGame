@@ -14,14 +14,17 @@ const ClosetView = () => {
     axios.get(`http://localhost:3001/api/users/${userID}/owned_clothing`)
       .then(res => {
         setUserClothes(res.data);
-        console.log('🌈',userClothes);
       })
       .catch(error => {
         console.error("Error fetching user's clothes", error);
       });
   }, []);
-
-  console.log('🍕',userClothes);
+  
+  // Log userClothes whenever it changes
+  useEffect(() => {
+    console.log('🍕', userClothes);
+  }, [userClothes]);
+  
   return (
     <div className="closet-view">
       <h1>Closet</h1>
