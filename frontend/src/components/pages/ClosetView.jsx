@@ -12,6 +12,8 @@ const ClosetView = () => {
   return (
     <div className="closet-view">
       <h1>Closet</h1>
+
+      {/* display user clothes testing */}
       <ul>
         {userClothes.map((clothing, index) => (
           <li key={index}>
@@ -20,6 +22,8 @@ const ClosetView = () => {
           </li>
         ))}
       </ul>
+
+
       <Link to={'/cabin'}>
         <button>Back</button>
       </Link>
