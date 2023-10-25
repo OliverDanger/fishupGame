@@ -6,24 +6,6 @@ import { useEffect, useState } from "react";
 import "../../styles/pages/ClosetView.scss";
 
 const ClosetView = () => {
-  const [userClothes, setUserClothes] = useState([]);
-  const userID = 1;
-
-  // fetch clothes owned by user matching the userID constant
-  useEffect(() => {
-    axios.get(`http://localhost:3001/api/users/${userID}/owned_clothing`)
-      .then(res => {
-        setUserClothes(res.data);
-      })
-      .catch(error => {
-        console.error("Error fetching user's clothes", error);
-      });
-  }, []);
-  
-  // Log userClothes whenever it changes
-  useEffect(() => {
-    console.log('🍕', userClothes);
-  }, [userClothes]);
   
   return (
     <div className="closet-view">
