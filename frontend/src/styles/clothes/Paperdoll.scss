@@ -1,0 +1,16 @@
+.pose-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  overflow: hidden;
+
+  background-color: darkslategray;
+}
+
+.paperdoll-image {
+  width: auto;
+  height: 90%;
+  object-fit: contain;
+  transform: translateY(2%);
+}

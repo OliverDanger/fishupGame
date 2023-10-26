@@ -4,7 +4,7 @@ import { UserContext } from "../context/UserContext";
 
 import "../../styles/pages/ClosetView.scss";
 
-import paperdoll from "../../assets/paperdoll/poses/pose1_fishbot.png";
+import Paperdoll from "../clothes/Paperdoll";
 
 const ClosetView = () => {
 
@@ -14,11 +14,7 @@ const ClosetView = () => {
     <div className="closet-view">
 
       <div className="display">
-        <div className="pose-container">
-
-          <img src={paperdoll} alt="Robot Paper Doll" className="paperdoll-image" />
-
-        </div>
+        <Paperdoll></Paperdoll>
         <div className="dresser-container">
           {/* display user clothes testing */}
           <ul>
