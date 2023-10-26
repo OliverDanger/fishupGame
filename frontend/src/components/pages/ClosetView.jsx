@@ -1,33 +1,17 @@
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { UserContext } from "../context/UserContext";
 
 import "../../styles/pages/ClosetView.scss";
 
 import Paperdoll from "../clothes/Paperdoll";
+import Dresser from "../clothes/Dresser";
 
-const ClosetView = () => {
-
-  const { userClothes } = useContext(UserContext);
-  
+const ClosetView = () => { 
   return (
     <div className="closet-view">
 
       <div className="display">
         <Paperdoll></Paperdoll>
-        <div className="dresser-container">
-          {/* display user clothes testing */}
-          <ul>
-            {userClothes.map((clothing, index) => (
-              <li key={index}>
-                <p>{`ID: ${clothing.id}, User ID: ${clothing.user_id}, Clothing ID: ${clothing.clothing_article_id}`}</p>
-                <p>{`Created at: ${clothing.created_at}, Updated at: ${clothing.updated_at}`}</p>
-              </li>
-            ))}
-          </ul>
-
-        </div>
-
+        <Dresser></Dresser>
       </div>
 
 
