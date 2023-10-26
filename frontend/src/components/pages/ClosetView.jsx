@@ -12,8 +12,6 @@ const ClosetView = () => {
   
   return (
     <div className="closet-view">
-      <h1>Closet</h1>
-
 
       <div className="display">
         <div className="pose-container">
