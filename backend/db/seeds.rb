@@ -204,6 +204,9 @@ users = User.create!([
     password: "ver",
     x_coordinate: 3,
     y_coordinate: 3,
+    body_upper: 2,
+    body_lower: 2,
+    arms_upper: 2,
   },
 ])
 
