@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_26_192021) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_26_192929) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -82,6 +82,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_26_192021) do
     t.integer "jacket"
     t.boolean "arms_upper"
     t.boolean "arms_lower"
+    t.string "name"
     t.index ["user_id"], name: "index_outfits_on_user_id"
   end
 
@@ -131,6 +132,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_26_192021) do
     t.datetime "updated_at", null: false
     t.integer "x_coordinate"
     t.integer "y_coordinate"
+    t.integer "hat"
+    t.integer "face_upper"
+    t.integer "face_lower"
+    t.integer "neck"
+    t.integer "body_upper"
+    t.integer "body_lower"
+    t.integer "arms_upper"
+    t.integer "arms_lower"
+    t.integer "hand_left"
+    t.integer "hand_right"
+    t.integer "legs_upper"
+    t.integer "legs_lower"
+    t.integer "socks"
+    t.integer "shoes"
+    t.integer "jacket"
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
