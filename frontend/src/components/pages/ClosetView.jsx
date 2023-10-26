@@ -15,21 +15,24 @@ const ClosetView = () => {
       <h1>Closet</h1>
 
 
-      <div className="pose-container">
+      <div className="display">
+        <div className="pose-container">
 
-        <img src={paperdoll} alt="Robot Paper Doll" className="paperdoll-image" />
+          <img src={paperdoll} alt="Robot Paper Doll" className="paperdoll-image" />
 
-      </div>
-      <div className="dresser-container">
-        {/* display user clothes testing */}
-        <ul>
-          {userClothes.map((clothing, index) => (
-            <li key={index}>
-              <p>{`ID: ${clothing.id}, User ID: ${clothing.user_id}, Clothing ID: ${clothing.clothing_article_id}`}</p>
-              <p>{`Created at: ${clothing.created_at}, Updated at: ${clothing.updated_at}`}</p>
-            </li>
-          ))}
-        </ul>
+        </div>
+        <div className="dresser-container">
+          {/* display user clothes testing */}
+          <ul>
+            {userClothes.map((clothing, index) => (
+              <li key={index}>
+                <p>{`ID: ${clothing.id}, User ID: ${clothing.user_id}, Clothing ID: ${clothing.clothing_article_id}`}</p>
+                <p>{`Created at: ${clothing.created_at}, Updated at: ${clothing.updated_at}`}</p>
+              </li>
+            ))}
+          </ul>
+
+        </div>
 
       </div>
 
