@@ -222,10 +222,12 @@ owned_articles = OwnedArticle.create!([
   {
     user_id: 1,
     clothing_article_id: 1,
+    number_held: 1,
   },
   {
     user_id: 1,
     clothing_article_id: 2,
+    number_held: 2,
   }
 ])
 
