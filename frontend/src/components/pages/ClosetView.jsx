@@ -13,8 +13,6 @@ const ClosetView = () => {
         <Paperdoll></Paperdoll>
         <Dresser></Dresser>
       </div>
-
-
       <Link to={'/cabin'}>
         <button>Back</button>
       </Link>
