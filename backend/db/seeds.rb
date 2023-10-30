@@ -165,7 +165,7 @@ clothes = ClothingArticle.create!([
   {
     id: 2,
     name: "Black T-shirt",
-    description: "A cozy and clean white t-shirt",
+    description: "A cozy and clean black t-shirt",
     colour: "space",
     fancy: 0,
     cool: 1,

@@ -14,9 +14,9 @@ Rails.application.routes.draw do
         get 'get_user_info'
       end
     end
-    resources :owned_articles, only: [:index]
-
+    
     # GET api/users/:user_id/owned_clothing gives selected user's owned clothing
+    resources :owned_articles, only: [:index]
     get 'users/:user_id/owned_clothing', to: 'owned_articles#index', as: 'user_owned_clothing'
   end
 end
