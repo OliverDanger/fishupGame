@@ -1,4 +1,3 @@
-import React from 'react';
 import '../../styles/clothes/Paperdoll.scss';
 import pose2_fishbot from '../../assets/paperdoll/poses/pose2_fishbot.svg';
 
