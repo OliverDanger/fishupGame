@@ -6,7 +6,7 @@ export const UserContext = createContext();
 export const UserProvider = ({ children }) => {
   const [dataFetched, setDataFetched] = useState(false);
   const [userClothes, setUserClothes] = useState([]);
-  const [clothesDetails, setClothesDetails] = useState(false);
+  const [clothesDetails, setClothesDetails] = useState([]);
 
   // constant for testing
   const userID = 1;
@@ -23,29 +23,32 @@ export const UserProvider = ({ children }) => {
       });
   };
 
-  const fetchClothingDetails = () => {
-    axios.get(`http://localhost:3001/api/clothing_articles?ids=${userClothes.map(userCloth => userCloth.clothing_article_id).join(',')}`)
+  // fetch clothing details from provided array of clothing ids
+  const fetchClothingDetails = (clothingIds) => {
+    axios.get(`http://localhost:3001/api/clothing_articles?ids=${clothingIds.join(',')}`)
       .then(res => {
         setClothesDetails(res.data);
-        console.log('Aaaaaaaaa', clothesDetails);
+        console.log('Aaaaaaaaa', res.data);
       })
       .catch(error => {
         console.error("Error fetching clothing details", error);
       });
   };
 
+  // on start fetches user clothing, then after data fetched is set to true, fetches details for the provided user clothing
   useEffect(() => {
     if (!dataFetched) {
       fetchUserClothing();
     }
+    if (userClothes.length > 0 && clothesDetails.length === 0) {
+      const clothingIds = userClothes.map(userCloth => userCloth.clothing_article_id);
+      fetchClothingDetails(clothingIds);
+    }
   }, [dataFetched]);
 
-  useEffect(() => {
-    fetchClothingDetails();
-  }, [userClothes]);
 
   return (
-    <UserContext.Provider value={{ userClothes, clothesDetails }}>
+    <UserContext.Provider value={{ userClothes, clothesDetails, setDataFetched }}>
       {children}
     </UserContext.Provider>
   );
