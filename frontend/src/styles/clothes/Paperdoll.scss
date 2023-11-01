@@ -1,3 +1,5 @@
+@import 'clothing-styles';
+
 .pose-container {
   display: flex;
   justify-content: center;
@@ -16,5 +18,5 @@
 }
 
 .paperdoll-pose2 svg * {
-  fill: tomato; /* Add other necessary CSS properties */
+  width: 200px;
 }

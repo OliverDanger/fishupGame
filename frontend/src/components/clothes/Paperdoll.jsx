@@ -9,7 +9,7 @@ const Paperdoll = () => {
     <div className="pose-container">
       <ReactSVG
         src={pose2_fishbot}
-        className='paperdoll-pose2'
+        className='paperdoll-pose2 peach-fill'
         style={{ width: 200 }}
       />
     </div>
