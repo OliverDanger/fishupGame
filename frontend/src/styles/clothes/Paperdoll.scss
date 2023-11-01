@@ -15,6 +15,6 @@
   transform: translateY(2%);
 }
 
-.paperdoll-pose2 svg {
-  fill: blue !important; /* Add other necessary CSS properties */
+.paperdoll-pose2 svg * {
+  fill: tomato; /* Add other necessary CSS properties */
 }
