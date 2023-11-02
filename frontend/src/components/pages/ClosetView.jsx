@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
 
@@ -9,7 +9,7 @@ import Paperdoll from "../clothes/Paperdoll";
 import Dresser from "../clothes/Dresser";
 
 const ClosetView = () => {
-  const { userInfo } = useContext(UserContext);
+  const { userInfo, userClothes, clothesDetails } = useContext(UserContext);
   // wearing is the temporary state of clothes being tried on.
   // The db is only updated when wearing clothes are confirmed
   // Userclothes represents the actual saved outfit of the user
@@ -31,8 +31,10 @@ const ClosetView = () => {
     shoes: null,
   });
 
+  const memoizedWearing = useMemo(() => wearing, [wearing]);
+
   useEffect(() => {
-    if (userInfo.length > 0) {
+    if (Object.keys(userInfo).length !== 0) {
       console.log('🦺', userInfo);
       setWearing({
         hat: userInfo.hat,
@@ -54,16 +56,14 @@ const ClosetView = () => {
     }
   }, [userInfo]);
 
-  useEffect(() => {
-    console.log('🧣', wearing);
-  }, [wearing]);
+  console.log('🍀', wearing);
 
   return (
     <div className="closet-view">
 
       <div className="display">
-        <Paperdoll></Paperdoll>
-        <Dresser></Dresser>
+        <Paperdoll wearing={wearing} />
+        <Dresser userClothes={userClothes} clothesDetails={clothesDetails} />
       </div>
       <Link to={'/cabin'}>
         <button>Back</button>

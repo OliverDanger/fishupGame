@@ -4,22 +4,24 @@ import axios from 'axios';
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
+
   const [clothesDataFetched, setClothesDataFetched] = useState(false);
   const [userClothes, setUserClothes] = useState([]);
   const [clothesDetails, setClothesDetails] = useState([]);
 
   const [userInfoFetched, setUserInfoFetched] = useState(false);
-  const [userInfo, setUserInfo] = useState([]);
+  const [userInfo, setUserInfo] = useState({});
 
   // constant for testing
   const userID = 1;
 
-  //fetch general user info
+  //fetch user info matching user ID
   const fetchUserByID = (userID) => {
-    axios.get(`api/users?id=${userID}`)
+    axios.get(`http://localhost:3001/api/users?id=${userID}`)
       .then(res => {
         setUserInfo(res.data);
         setUserInfoFetched(true);
+        console.log('🇨🇦', res.data);
       })
       .catch(error => {
         console.error("Error fetching user details", error);
@@ -49,8 +51,12 @@ export const UserProvider = ({ children }) => {
       });
   };
 
-  // on start fetches user clothing, then after data fetched is set to true, fetches details for the provided user clothing
+
+
   useEffect(() => {
+    if (!userInfoFetched) {
+      fetchUserByID(userID);
+    }
     if (!clothesDataFetched) {
       fetchUserClothing();
     }
@@ -58,14 +64,7 @@ export const UserProvider = ({ children }) => {
       const clothingIds = userClothes.map(userCloth => userCloth.clothing_article_id);
       fetchClothingDetails(clothingIds);
     }
-  }, [clothesDataFetched]);
-
-  useEffect(() => {
-    if (!userInfoFetched) {
-      fetchUserByID(userID);
-    }
-  }, [userInfoFetched]);
-
+  }, [clothesDataFetched, userInfoFetched]);
 
   return (
     <UserContext.Provider value={{ userInfo, userClothes, clothesDetails, setClothesDataFetched, setUserInfoFetched }}>

@@ -1,10 +1,7 @@
 import "../../styles/clothes/Dresser.scss";
 
-import { useContext } from "react";
-import { UserContext } from "../context/UserContext";
 
-const Dresser = () => {
-  const { userClothes, clothesDetails } = useContext(UserContext);
+const Dresser = ({ userClothes, clothesDetails }) => {
 
   return (
     <div className="dresser-container">

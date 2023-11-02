@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { UserProvider } from './components/context/UserContext';
 
 //components
@@ -11,17 +11,15 @@ import BelowDeckView from './components/pages/BelowDeckView';
 
 const App = () => {
   return (
-    <UserProvider>
-      <Router>
-        <Routes>
-          <Route path='/' element={<TitleView />} />
-          <Route path='/map' element={<MapView />} />
-          <Route path='/cabin' element={<CabinView />} />
-          <Route path='/cabin/closet' element={<ClosetView />} />
-          <Route path='/below' element={<BelowDeckView />} />
-        </Routes>
-      </Router>
-    </UserProvider>
+    <Router>
+      <Routes>
+        <Route path='/' element={<TitleView />} />
+        <Route path='/map' element={<MapView />} />
+        <Route path='/cabin' element={<CabinView />} />
+        <Route path='/cabin/closet' element={<UserProvider><ClosetView /></UserProvider>} />
+        <Route path='/below' element={<BelowDeckView />} />
+      </Routes>
+    </Router>
   );
 };
 
