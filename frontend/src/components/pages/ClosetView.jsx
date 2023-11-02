@@ -9,7 +9,7 @@ import Paperdoll from "../clothes/Paperdoll";
 import Dresser from "../clothes/Dresser";
 
 const ClosetView = () => {
-  const { userClothes } = useContext(UserContext);
+  const { userInfo } = useContext(UserContext);
   // wearing is the temporary state of clothes being tried on.
   // The db is only updated when wearing clothes are confirmed
   // Userclothes represents the actual saved outfit of the user
@@ -32,27 +32,27 @@ const ClosetView = () => {
   });
 
   useEffect(() => {
-    if (userClothes.length > 0) {
-      console.log('🦺', userClothes);
+    if (userInfo.length > 0) {
+      console.log('🦺', userInfo);
       setWearing({
-        hat: userClothes.hat,
-        faceUpper: userClothes.face_upper,
-        faceLower: userClothes.face_lower,
-        neck: userClothes.neck,
-        bodyUpper: userClothes.body_upper,
-        bodyLower: userClothes.body_lower,
-        armsUpper: userClothes.arms_upper,
-        armsLower: userClothes.arms_lower,
-        handLeft: userClothes.hand_left,
-        handRight: userClothes.hand_right,
-        jacket: userClothes.jacket,
-        legsUpper: userClothes.legs_upper,
-        legsLower: userClothes.legs_lower,
-        socks: userClothes.socks,
-        shoes: userClothes.shoes,
+        hat: userInfo.hat,
+        faceUpper: userInfo.face_upper,
+        faceLower: userInfo.face_lower,
+        neck: userInfo.neck,
+        bodyUpper: userInfo.body_upper,
+        bodyLower: userInfo.body_lower,
+        armsUpper: userInfo.arms_upper,
+        armsLower: userInfo.arms_lower,
+        handLeft: userInfo.hand_left,
+        handRight: userInfo.hand_right,
+        jacket: userInfo.jacket,
+        legsUpper: userInfo.legs_upper,
+        legsLower: userInfo.legs_lower,
+        socks: userInfo.socks,
+        shoes: userInfo.shoes,
       });
     }
-  }, [userClothes]);
+  }, [userInfo]);
 
   useEffect(() => {
     console.log('🧣', wearing);

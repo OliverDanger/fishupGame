@@ -10,7 +10,7 @@ class Api::UsersController < ApplicationController
   end
 
   def index 
-    @user = User.find(id: params[:id])
+    @user = User.find(params[:id])
     if @user
       render json: @user
     else
