@@ -21,7 +21,7 @@ const MapView = function() {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  });
+  }, []);
 
 
   return (

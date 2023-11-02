@@ -4,7 +4,6 @@ import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
 
 const Dresser = () => {
-
   const { userClothes, clothesDetails } = useContext(UserContext);
 
   return (
