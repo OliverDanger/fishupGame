@@ -9,9 +9,11 @@ Rails.application.routes.draw do
     resources :clothing_articles, only: [:index]
 
     # GET api/users/get_user_info?username=:username gives selected user info
+    # GET api/users/index?id=:id gives selected user info
     resources :users, only: [] do 
       collection do
         get 'get_user_info'
+        get 'index'
       end
     end
     

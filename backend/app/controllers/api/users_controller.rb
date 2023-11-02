@@ -8,4 +8,13 @@ class Api::UsersController < ApplicationController
       render json: { error: "User not found" }, status: :not_found
     end
   end
+
+  def index 
+    @user = User.find(id: params[:id])
+    if @user
+      render json: @user
+    else
+      render json: { error: "User not found" }, status: :not_found
+    end
+  end
 end
