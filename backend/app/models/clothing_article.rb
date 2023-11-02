@@ -2,7 +2,7 @@ class ClothingArticle < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 100 }
   validates :description, presence: true, length: { maximum: 500 }
-  validates :colour, presence: true, inclusion: { in: %w(peach watermelon cherry apple orange lemon lime pine sky ocean trench lavender grape cloud space slate bread toast), message: "%{value} is not a valid colour" }
+  validates :colour, presence: true, inclusion: { in: %w(peach watermelon cherry apple orange lemon lime pine sky ocean trench grape blueberry cloud space slate bread toast), message: "%{value} is not a valid colour" }
   validates :fancy, numericality: true
   validates :cool, numericality: true
   validates :eccentric, numericality: true
