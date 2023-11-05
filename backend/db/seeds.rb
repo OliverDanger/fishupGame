@@ -145,22 +145,8 @@ clothes = ClothingArticle.create!([
     eccentric: -1,
     camouflage: -1,
     set: nil,
-    hat: false,
-    face_upper: false,
-    face_lower: false,
-    neck: false,
-    body_upper: true,
-    body_lower: true,
-    arm_upper: true,
-    arm_lower: false,
-    hand_left: false,
-    hand_right: false,
-    jacket: false,
-    legs_upper: false,
-    legs_lower: false,
-    socks: false,
-    shoes: false,
-    img: "https://www.torontotees.com/wp-content/uploads/2022/09/men-shirt.png"
+    category:  "shirt",
+    img: "basicTshirt",
   },
   {
     id: 2,
@@ -172,23 +158,23 @@ clothes = ClothingArticle.create!([
     eccentric: -1,
     camouflage: 1,
     set: nil,
-    hat: false,
-    face_upper: false,
-    face_lower: false,
-    neck: false,
-    body_upper: true,
-    body_lower: true,
-    arm_upper: true,
-    arm_lower: false,
-    hand_left: false,
-    hand_right: false,
-    jacket: false,
-    legs_upper: false,
-    legs_lower: false,
-    socks: false,
-    shoes: false,
-    img: "https://dixxon.ca/cdn/shop/products/dixxon-perfect-blank-tee-black-1_1200x1200.png?v=1680554505"
+    category:  "shirt",
+    img: "basicTshirt",
   },
+  {
+    id: 3,
+    name: "Orange Shorts",
+    description: "Those are some orange shorts!",
+    colour: "orange",
+    fancy: 0,
+    cool: 1,
+    eccentric: -1,
+    camouflage: 1,
+    set: nil,
+    category:  "shorts",
+    img: "basicShorts",
+  },
+
 ])
 
 puts "Clothes created!"
@@ -204,9 +190,7 @@ users = User.create!([
     password: "ver",
     x_coordinate: 3,
     y_coordinate: 3,
-    body_upper: 2,
-    body_lower: 2,
-    arms_upper: 2,
+    clothes: [3, 1],
   },
 ])
 
@@ -228,7 +212,12 @@ owned_articles = OwnedArticle.create!([
     user_id: 1,
     clothing_article_id: 2,
     number_held: 2,
-  }
+  },
+  {
+    user_id: 1,
+    clothing_article_id: 3,
+    number_held: 50,
+  },
 ])
 
 puts "Clothes owned!"
