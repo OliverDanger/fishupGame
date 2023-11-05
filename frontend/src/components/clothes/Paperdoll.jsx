@@ -10,12 +10,12 @@ const Paperdoll = ({ wearing }) => {
     <div className="pose-container">
       <ReactSVG
         src={pose2_fishbot}
-        className='paperdoll-pose2 peach-fill'
+        className='paperdoll-pose2 lime-fill'
         style={{ width: 200 }}
       />
       <ReactSVG
         src={tshirt}
-        className='tshirt-pose2 cloud-fill'
+        className='tshirt-pose2 pine-fill'
         style={{ width: 200 }}
       />
     </div>

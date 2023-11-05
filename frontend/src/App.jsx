@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { UserProvider } from './components/context/UserContext';
+import { UserProvider } from './hooks/context/UserContext';
 
 //components
 import TitleView from './components/pages/TitleView';

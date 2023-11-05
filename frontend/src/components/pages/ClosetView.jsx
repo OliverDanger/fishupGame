@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect, useMemo } from "react";
 import { useContext } from "react";
-import { UserContext } from "../context/UserContext";
+import { UserContext } from "../../hooks/context/UserContext";
 
 import "../../styles/pages/ClosetView.scss";
 
@@ -31,7 +31,7 @@ const ClosetView = () => {
     shoes: null,
   });
 
-  const memoizedWearing = useMemo(() => wearing, [wearing]);
+
 
   useEffect(() => {
     if (Object.keys(userInfo).length !== 0) {

@@ -7,7 +7,7 @@ const Dresser = ({ userClothes, clothesDetails }) => {
     <div className="dresser-container">
       {/* display user clothes testing */}
       <ul>
-        {clothesDetails.length > 0 &&
+        {clothesDetails.length > 0 && userClothes.length > 0 &&
           userClothes.map((clothing, index) => (
             <li key={index}>
               <p>{`${clothesDetails.find(c => c.id === clothing.clothing_article_id).description}`}</p>

@@ -4,16 +4,25 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50%;
+  width: 50vw;
   overflow: hidden;
+  position: relative;
 
   background-color: darkslategray;
 }
 
+.paperdoll-pose2,
+.tshirt-pose2 {
+  position: absolute;
+  top: 0;
+  left: 50;
+  width: 20vw;
+  height: auto;
+}
+
 .paperdoll-image {
-  width: auto;
+  width: 100%;
   height: 90%;
-  object-fit: contain;
   transform: translateY(2%);
 }
 
