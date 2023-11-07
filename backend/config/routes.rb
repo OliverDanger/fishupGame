@@ -11,8 +11,10 @@ Rails.application.routes.draw do
     # GET api/users/get_user_info?username=:username gives selected user info
     # GET api/users/index?id=:id gives selected user info
     resources :users, only: [:index] do 
-      collection do
+      member do
         get 'get_user_info'
+        get 'get_user_clothes'
+        get 'get_user_wardrobe'
       end
     end
     
