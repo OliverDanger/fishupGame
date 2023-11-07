@@ -5,7 +5,7 @@ export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
 
-  const [userInfo, setUserInfo] = useState({id: null});
+  const [userInfo, setUserInfo] = useState({ id: null });
   const [userClothes, setUserClothes] = useState([]);
   const [clothesDetails, setClothesDetails] = useState([]);
 
@@ -17,8 +17,6 @@ export const UserProvider = ({ children }) => {
     axios.get(`http://localhost:3001/api/users?id=${userID}`)
       .then(res => {
         setUserInfo(res.data);
-        console.log('🇨🇦', res.data);
-        fetchUserClothing(userID);
       })
       .catch(error => {
         console.error("Error fetching user details", error);
@@ -29,10 +27,7 @@ export const UserProvider = ({ children }) => {
   const fetchUserClothing = (userID) => {
     axios.get(`http://localhost:3001/api/users/${userID}/owned_clothing`)
       .then(res => {
-        console.log('🐙', res.data);
         setUserClothes(res.data);
-        const clothingIds = res.data.map(item => item.clothing_article_id);
-        fetchClothingDetails(clothingIds);
       })
       .catch(error => {
         console.error("Error fetching user's clothes", error);
@@ -53,17 +48,30 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     if (userInfo.id === null) {
       fetchUserByID(userID);
-    }
-    if (userInfo.id !== null && userClothes.length === 0) {
       fetchUserClothing(userID);
     }
-    if (userInfo.id !== null && userClothes.length > 0 && clothesDetails.length === 0) {
-      const clothingIds = userClothes.map(item => item.clothing_article_id);
-      fetchClothingDetails(clothingIds);
-    }
-  }, [userInfo, userClothes, clothesDetails, userID]);
-  
-  
+  }, []);
+
+  useEffect(() => {
+    const clothingIds = userClothes.map(item => item.clothing_article_id);
+    fetchClothingDetails(clothingIds);
+  }, [userClothes]);
+
+
+  // useEffect(() => {
+  //   if (userInfo.id === null) {
+  //     fetchUserByID(userID);
+  //   }
+  //   if (userClothes.length === 0) {
+  //     fetchUserClothing(userID);
+  //   }
+  //   if (userInfo.id !== null && userClothes.length > 0 && clothesDetails.length === 0) {
+  //     const clothingIds = userClothes.map(item => item.clothing_article_id);
+  //     fetchClothingDetails(clothingIds);
+  //   }
+  // }, [userInfo, userClothes, clothesDetails, userID]);
+
+
 
   return (
     <UserContext.Provider value={{ userInfo, userClothes, clothesDetails }}>
