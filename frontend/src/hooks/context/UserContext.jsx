@@ -1,6 +1,8 @@
 import { createContext, useState, useEffect } from "react";
 import axios from 'axios';
 
+import { backendURL } from "../../utils/_constants";
+
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
@@ -14,7 +16,7 @@ export const UserProvider = ({ children }) => {
 
   //fetch user info matching user ID then call fetchUserClothing
   const fetchUserByID = (userID) => {
-    axios.get(`http://localhost:3001/api/users?id=${userID}`)
+    axios.get(`${backendURL}/api/users?id=${userID}`)
       .then(res => {
         setUserInfo(res.data);
       })
@@ -25,7 +27,7 @@ export const UserProvider = ({ children }) => {
 
   // fetch clothes owned by user matching the userID constant
   const fetchUserClothing = (userID) => {
-    axios.get(`http://localhost:3001/api/users/${userID}/owned_clothing`)
+    axios.get(`${backendURL}/api/users/${userID}/owned_clothing`)
       .then(res => {
         setUserClothes(res.data);
       })
@@ -36,7 +38,7 @@ export const UserProvider = ({ children }) => {
 
   // fetch clothing details from provided array of clothing ids
   const fetchClothingDetails = (clothingIds) => {
-    axios.get(`http://localhost:3001/api/clothing_articles?ids=${clothingIds.join(',')}`)
+    axios.get(`${backendURL}/api/clothing_articles?ids=${clothingIds.join(',')}`)
       .then(res => {
         setClothesDetails(res.data);
       })

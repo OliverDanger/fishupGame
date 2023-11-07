@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { FixedSizeGrid as Grid } from "react-window";
 import { getTileComponent } from '../utils/TileList';
+import { backendURL } from "../utils/_constants";
 import { tileSize, mapWindowMargin } from "../utils/_constants";
 
 import "../styles/Map.scss";
@@ -15,7 +16,7 @@ const Map = function({ windowDimensions }) {
 
   // fetch map data
   useEffect(() => {
-    axios.get("http://localhost:3001/api/tiles")
+    axios.get(`${backendURL}/api/tiles`)
       .then(res => {
         setMapData(res.data);
       })
