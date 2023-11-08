@@ -1,43 +1,49 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useReducer } from "react";
 import axios from 'axios';
 
 import { backendURL } from "../../utils/_constants";
+import userDataReducer, { GET_USER, GET_USER_CLOTHES } from "./UserDataReducer";
 
 export const UserContext = createContext();
 
+const initialUserData = {
+  user: null,
+  clothes: null,
+  wardrobe: null,
+  loading: true,
+};
+
 export const UserProvider = ({ children }) => {
 
-  const [userInfo, setUserInfo] = useState({ id: null });
-  const [userClothes, setUserClothes] = useState([]);
-  const [clothesDetails, setClothesDetails] = useState([]);
+  const [userData, dispatchUserData] = useReducer(userDataReducer, initialUserData);
 
-  // constant for testing
-  const userID = 1;
-
-  //fetch user info matching user ID then call fetchUserClothing
-  const fetchUserByID = (userID) => {
+  const getUserByID = (userID) => {
     axios.get(`${backendURL}/api/users?id=${userID}`)
       .then(res => {
-        setUserInfo(res.data);
+        dispatchUserData({
+          type: GET_USER,
+          user: res.data,
+        });
       })
       .catch(error => {
         console.error("Error fetching user details", error);
       });
   };
 
-  // fetch clothes owned by user matching the userID constant
-  const fetchUserClothing = (userID) => {
+  const getUserClothes = (userID) => {
     axios.get(`${backendURL}/api/users/${userID}/owned_clothing`)
       .then(res => {
-        setUserClothes(res.data);
+        dispatchUserData({
+          type: GET_USER_CLOTHES,
+          clothes: res.data,
+        });
       })
       .catch(error => {
         console.error("Error fetching user's clothes", error);
       });
   };
 
-  // fetch clothing details from provided array of clothing ids
-  const fetchClothingDetails = (clothingIds) => {
+  const getUserWardrobe = (clothingIds) => {
     axios.get(`${backendURL}/api/clothing_articles?ids=${clothingIds.join(',')}`)
       .then(res => {
         setClothesDetails(res.data);
@@ -47,36 +53,15 @@ export const UserProvider = ({ children }) => {
       });
   };
 
-  useEffect(() => {
-    if (userInfo.id === null) {
-      fetchUserByID(userID);
-      fetchUserClothing(userID);
-    }
-  }, []);
-
-  useEffect(() => {
-    const clothingIds = userClothes.map(item => item.clothing_article_id);
-    fetchClothingDetails(clothingIds);
-  }, [userClothes]);
-
-
-  // useEffect(() => {
-  //   if (userInfo.id === null) {
-  //     fetchUserByID(userID);
-  //   }
-  //   if (userClothes.length === 0) {
-  //     fetchUserClothing(userID);
-  //   }
-  //   if (userInfo.id !== null && userClothes.length > 0 && clothesDetails.length === 0) {
-  //     const clothingIds = userClothes.map(item => item.clothing_article_id);
-  //     fetchClothingDetails(clothingIds);
-  //   }
-  // }, [userInfo, userClothes, clothesDetails, userID]);
-
-
 
   return (
-    <UserContext.Provider value={{ userInfo, userClothes, clothesDetails }}>
+    <UserContext.Provider value={{
+      userData,
+      dispatchUserData,
+      getUserByID,
+      getUserClothes,
+      getUserWardrobe,
+    }}>
       {children}
     </UserContext.Provider>
   );
