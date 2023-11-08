@@ -15,22 +15,22 @@ const ClosetView = () => {
 
   useEffect(() => {
     if (!userData.user) {
-      console.log('🦺', userData);
+      // console.log('🦺', userData);
       getUserByID(userID);
       getUserClothes(userID);
       getUserWardrobe(userID);
     } else {
-      console.log('🧣', userData);
+      // console.log('🧣', userData);
     }
   }, []);
 
-  console.log('🍀', userData);
+  // console.log('🍀', userData);
 
   return (
     <div className="closet-view">
 
       <div className="display">
-        <Paperdoll />
+        <Paperdoll userData={userData}/>
         <Dresser userData={userData}/>
       </div>
       <Link to={'/cabin'}>

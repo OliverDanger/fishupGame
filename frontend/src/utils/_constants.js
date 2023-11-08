@@ -1,3 +1,10 @@
+// Clothing Constants
+
+export const clothingTypes = [
+  'shirt',
+  'shorts',
+];
+
 // Map Constants
 
 export const tileSize = 100;
