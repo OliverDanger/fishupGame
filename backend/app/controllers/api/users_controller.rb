@@ -31,6 +31,17 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def set_user_clothes
+    @user = User.find(params[:id])
+  
+    if @user.update(clothes: params[:clothes])
+      render json: { message: "User's clothes updated successfully." }, status: :ok
+    else
+      render json: { error: "Failed to update user's clothes." }, status: :unprocessable_entity
+    end
+  end
+  
+
   def get_user_wardrobe
     # Get all the user's owned clothes and their details
     @owned_clothing = OwnedArticle.includes(:clothing_article).where(user_id: params[:id])

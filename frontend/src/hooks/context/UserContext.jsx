@@ -31,7 +31,7 @@ export const UserProvider = ({ children }) => {
   };
 
   const getUserClothes = (userID) => {
-    axios.get(`${backendURL}/api/users/${userID}/owned_clothing`)
+    axios.get(`${backendURL}/api/users/${userID}/get_user_clothes`)
       .then(res => {
         dispatchUserData({
           type: SET_USER_CLOTHES,
@@ -40,6 +40,16 @@ export const UserProvider = ({ children }) => {
       })
       .catch(error => {
         console.error("Error fetching user's clothes", error);
+      });
+  };
+
+  const setUserClothes = (clothes) => {
+    return axios.post(`${backendURL}/api/users/${userID}/set_user_clothes`, { clothes })
+      .then((res) => {
+        return res.data;
+      })
+      .catch((error) => {
+        console.error("Error setting user's clothes", error);
       });
   };
 
@@ -63,6 +73,7 @@ export const UserProvider = ({ children }) => {
       dispatchUserData,
       getUserByID,
       getUserClothes,
+      setUserClothes,
       getUserWardrobe,
     }}>
       {children}
