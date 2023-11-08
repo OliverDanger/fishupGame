@@ -2,7 +2,7 @@ import { createContext, useReducer } from "react";
 import axios from 'axios';
 
 import { backendURL } from "../../utils/_constants";
-import userDataReducer, { GET_USER, GET_USER_CLOTHES, GET_USER_WARDROBE } from "./UserDataReducer";
+import userDataReducer, { SET_USER, SET_USER_CLOTHES, SET_USER_WARDROBE } from "./UserDataReducer";
 
 export const UserContext = createContext();
 
@@ -21,7 +21,7 @@ export const UserProvider = ({ children }) => {
     axios.get(`${backendURL}/api/users?id=${userID}`)
       .then(res => {
         dispatchUserData({
-          type: GET_USER,
+          type: SET_USER,
           user: res.data,
         });
       })
@@ -34,7 +34,7 @@ export const UserProvider = ({ children }) => {
     axios.get(`${backendURL}/api/users/${userID}/owned_clothing`)
       .then(res => {
         dispatchUserData({
-          type: GET_USER_CLOTHES,
+          type: SET_USER_CLOTHES,
           clothes: res.data,
         });
       })
@@ -47,7 +47,7 @@ export const UserProvider = ({ children }) => {
     axios.get(`${backendURL}/api/users/${userID}/get_user_wardrobe`)
       .then(res => {
         dispatchUserData({
-          type: GET_USER_WARDROBE,
+          type: SET_USER_WARDROBE,
           wardrobe: res.data,
         });
       })
