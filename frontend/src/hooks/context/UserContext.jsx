@@ -43,7 +43,7 @@ export const UserProvider = ({ children }) => {
       });
   };
 
-  const getUserWardrobe = (clothingIds) => {
+  const getUserWardrobe = (userID) => {
     axios.get(`${backendURL}/api/clothing_articles?ids=${clothingIds.join(',')}`)
       .then(res => {
         setClothesDetails(res.data);

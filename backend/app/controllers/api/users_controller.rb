@@ -32,15 +32,31 @@ class Api::UsersController < ApplicationController
   end
 
   def get_user_wardrobe
-    # get all the users owned clothes and then their details
-    @owned_clothing_ids = OwnedArticle.where(user_id: params[:id]).pluck(:clothing_article_id)
-
-    if @owned_clothing_ids.present? 
-      @owned_clothing_details = ClothingArticle.where(id: @owned_clothing_ids)
-      render json: @owned_clothing_details
+    # Get all the user's owned clothes and their details
+    @owned_clothing = OwnedArticle.includes(:clothing_article).where(user_id: params[:id])
+  
+    if @owned_clothing.present? 
+      @wardrobe_details = @owned_clothing.map do |owned_article|
+        {
+          id: owned_article.clothing_article.id,
+          name: owned_article.clothing_article.name,
+          description: owned_article.clothing_article.description,
+          colour: owned_article.clothing_article.colour,
+          fancy: owned_article.clothing_article.fancy,
+          cool: owned_article.clothing_article.cool,
+          eccentric: owned_article.clothing_article.eccentric,
+          camouflage: owned_article.clothing_article.camouflage,
+          set: owned_article.clothing_article.set,
+          img: owned_article.clothing_article.img,
+          category: owned_article.clothing_article.category,
+          number_held: owned_article.number_held
+        }
+      end
+      render json: @wardrobe_details
     else
-      render json: { message: "User has no clothes."}, status: :ok
+      render json: { message: "User has no clothes." }, status: :ok
     end
   end
+  
 
 end
