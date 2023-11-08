@@ -4,7 +4,7 @@ import '../../styles/clothes/Paperdoll.scss';
 import pose2_fishbot from '../../assets/paperdoll/poses/pose2_fishbot.svg';
 import tshirt from '../../assets/paperdoll/shirts/pose2_basicTshirt.svg';
 
-const Paperdoll = ({ wearing }) => {
+const Paperdoll = ({ userData, wearing }) => {
 
   return (
     <div className="pose-container">

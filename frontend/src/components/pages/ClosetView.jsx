@@ -13,16 +13,27 @@ const userID = 1;
 const ClosetView = () => {
   const { userData, getUserByID, getUserClothes, getUserWardrobe } = useContext(UserContext);
 
+  // wearing is a temporary state for trying on clothes in the closet.
+  // When a clothing choice is confirmed userData is updated using wearing.
+  const [ wearing, setWearing ] = useState([]);
+
   useEffect(() => {
     if (!userData.user) {
-      // console.log('🦺', userData);
+      console.log('🦺', userData);
       getUserByID(userID);
       getUserClothes(userID);
       getUserWardrobe(userID);
     } else {
-      // console.log('🧣', userData);
+      console.log('🧣', userData);
     }
   }, []);
+
+  useEffect(() => {
+    if (userData.clothes) {
+      setWearing(userData.clothes);
+      console.log('QQQQQ', wearing);
+    }
+  }, [userData]);
 
   // console.log('🍀', userData);
 
@@ -30,7 +41,7 @@ const ClosetView = () => {
     <div className="closet-view">
 
       <div className="display">
-        <Paperdoll userData={userData}/>
+        <Paperdoll userData={userData} wearing={wearing} />
         <Dresser userData={userData}/>
       </div>
       <Link to={'/cabin'}>
