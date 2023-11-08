@@ -1,5 +1,6 @@
 export const GET_USER = 'GET_USER';
 export const GET_USER_CLOTHES = 'GET_USER_CLOTHES';
+export const SET_USER_CLOTHES = 'SET_USER_CLOTHES';
 export const GET_USER_WARDROBE = 'GET_USER_WARDROBE';
 
 const userDataReducer = (state, action) => {
@@ -17,6 +18,13 @@ const userDataReducer = (state, action) => {
         ...state,
         clothes: action.clothes,
         loading: false,
+      };
+
+    case SET_USER_CLOTHES:
+      return {
+        ...state,
+        clothes: action.clothes,
+        loading:false,
       };
 
     case GET_USER_WARDROBE:
