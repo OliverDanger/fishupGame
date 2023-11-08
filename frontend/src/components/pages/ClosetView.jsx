@@ -22,16 +22,16 @@ const ClosetView = () => {
     } else {
       console.log('🧣', userData);
     }
-  }, [userData]);
+  }, []);
 
-  console.log('🍀');
+  console.log('🍀', userData);
 
   return (
     <div className="closet-view">
 
       <div className="display">
         <Paperdoll />
-        <Dresser />
+        <Dresser userData={userData}/>
       </div>
       <Link to={'/cabin'}>
         <button>Back</button>
