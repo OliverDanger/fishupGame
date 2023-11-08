@@ -1,8 +1,18 @@
 // Clothing Constants
 
 export const clothingTypes = [
+  'hat',
+  'glasses',
+  'face',
+  'neckwear',
   'shirt',
+  'jacket',
+  'wristwear',
+  'gloves',
   'shorts',
+  'pants',
+  'socks',
+  'shoes',
 ];
 
 // Map Constants

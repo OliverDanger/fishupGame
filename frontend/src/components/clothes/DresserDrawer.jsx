@@ -1,3 +1,5 @@
+import '../../styles/clothes/DresserDrawer.scss';
+
 const DresserDrawer = ({ clothingType }) => {
   return (
     <div className="dresser-drawer">
