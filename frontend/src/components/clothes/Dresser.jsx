@@ -6,7 +6,7 @@ const Dresser = ({ userClothes, clothesDetails }) => {
   return (
     <div className="dresser-container">
       {/* display user clothes testing */}
-      <ul>
+      {/* <ul>
         {clothesDetails.length > 0 && userClothes.length > 0 &&
           userClothes.map((clothing, index) => (
             <li key={index}>
@@ -15,7 +15,7 @@ const Dresser = ({ userClothes, clothesDetails }) => {
               <p>{`Created at: ${clothing.created_at}, Updated at: ${clothing.updated_at}`}</p>
             </li>
           ))}
-      </ul>
+      </ul> */}
     </div>
   );
   
