@@ -1,4 +1,6 @@
 import "../../styles/clothes/Dresser.scss";
+
+import DresserDrawer from "./DresserDrawer";
 import { clothingTypes } from "../../utils/_constants";
 
 const sampleData = [
@@ -49,14 +51,15 @@ const sampleData = [
 
 
 const Dresser = ({ userData }) => {
-
-
-
   return (
     <div className="dresser-container">
+      {clothingTypes && clothingTypes.map((type, index) => (
+        <DresserDrawer key={index} clothingType={type} />
+      ))}
     </div>
   );
-
 };
+
+
 
 export default Dresser;
