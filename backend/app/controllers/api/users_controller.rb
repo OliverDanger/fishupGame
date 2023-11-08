@@ -32,19 +32,15 @@ class Api::UsersController < ApplicationController
   end
 
   def get_user_wardrobe
-    # get all the users owned clothes as well as worn clothes and then their details
-    @user = User.find(params[:id])
-    @worn_clothing_ids = @user.clothes
+    # get all the users owned clothes and then their details
     @owned_clothing_ids = OwnedArticle.where(user_id: params[:id]).pluck(:clothing_article_id)
 
     if @owned_clothing_ids.present? 
-      @worn_clothing_details = ClothingArticle.where(id: @worn_clothing_ids)
       @owned_clothing_details = ClothingArticle.where(id: @owned_clothing_ids)
-      render json: { worn: @worn_clothing_details, all: @owned_clothing_details}
+      render json: @owned_clothing_details
     else
       render json: { message: "User has no clothes."}, status: :ok
     end
   end
-
 
 end
