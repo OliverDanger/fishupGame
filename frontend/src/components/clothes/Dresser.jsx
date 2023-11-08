@@ -1,7 +1,10 @@
+/* eslint-disable camelcase */
 import "../../styles/clothes/Dresser.scss";
 
-import DresserDrawer from "./DresserDrawer";
+import ClosedDresserDrawer from "./ClosedDresserDrawer";
+import OpenDresserDrawer from "./OpenDresserDrawer";
 import { clothingTypes } from "../../utils/_constants";
+import { useState } from "react";
 
 const sampleData = [
   {
@@ -51,11 +54,28 @@ const sampleData = [
 
 
 const Dresser = ({ userData }) => {
+  const [ dresserState, setDresserState] = useState('drawers');
+
+  const closeDrawer = () => {
+    setDresserState('drawers');
+  };
+
+  const openDrawer = (clothingType) => {
+    setDresserState(clothingType);
+  };
+
   return (
     <div className="dresser-container">
-      {clothingTypes && clothingTypes.map((type, index) => (
-        <DresserDrawer key={index} clothingType={type} />
+      {/* ALL DRAWERS */}
+      {dresserState === 'drawers' && clothingTypes && clothingTypes.map((clothingType, index) => (
+        <ClosedDresserDrawer key={index} clothingType={clothingType} openDrawer={openDrawer} />
       ))}
+
+      {/* OPEN DRAWER */}
+      {dresserState !== 'drawers' &&
+        <OpenDresserDrawer clothingType={dresserState} closeDrawer={closeDrawer}/>
+      }
+      {}
     </div>
   );
 };

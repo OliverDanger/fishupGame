@@ -1,4 +1,4 @@
-.dresser-drawer {
+.closed-dresser-drawer {
   width: 90%;
   margin-bottom: 10px;
   background-color: #8a7258;
@@ -6,6 +6,6 @@
 }
 
 /* Add margin to the top of the first item */
-.dresser-drawer:first-of-type {
+.closed-dresser-drawer:first-of-type {
   margin-top: 20px;
 }
