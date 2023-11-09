@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import '../../styles/clothes/PaperdollPose';
 import { ReactSVG } from 'react-svg';
+
+import '../../styles/clothes/PaperdollPose.scss';
 
 import { paperdollWidth } from '../../utils/_constants';
 
@@ -8,7 +9,7 @@ const PaperdollPose = ({ poseNumber }) => {
   const [svgContent, setSvgContent] = useState(null);
 
   useEffect(() => {
-    import(`../../assets/paperdoll/poses/pose${poseNumber}_fishbot`)
+    import(`../../assets/paperdoll/poses/pose${poseNumber}_fishbot.svg`)
       .then(svg => {
         setSvgContent(svg.default);
       })
@@ -18,11 +19,11 @@ const PaperdollPose = ({ poseNumber }) => {
   }, [poseNumber]);
 
   return (
-    <div className={`pose pose-${poseNumber}`}>
+    <div className={`paperdoll-nude-frame`}>
       { svgContent &&
         <ReactSVG
           src={svgContent}
-          className={`paperdoll paperdoll-pose${poseNumber}`}
+          className={`paperdoll-nude-svg paperdoll-pose${poseNumber}`}
           style={{ width: paperdollWidth }}
         />
       }

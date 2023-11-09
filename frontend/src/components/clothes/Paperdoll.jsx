@@ -1,18 +1,17 @@
 import { ReactSVG } from 'react-svg';
 
 import '../../styles/clothes/Paperdoll.scss';
-import pose2_fishbot from '../../assets/paperdoll/poses/pose2_fishbot.svg';
+
+import PaperdollPose from './PaperdollPose';
 import tshirt from '../../assets/paperdoll/shirts/pose2_basicTshirt.svg';
+
+const poseNumber = 2;
 
 const Paperdoll = ({ userData, wearing }) => {
 
   return (
     <div className="pose-container">
-      <ReactSVG
-        src={pose2_fishbot}
-        className='paperdoll-pose2 lime-fill'
-        style={{ width: 200 }}
-      />
+      <PaperdollPose poseNumber={poseNumber}/>
       <ReactSVG
         src={tshirt}
         className='tshirt-pose2 pine-fill'

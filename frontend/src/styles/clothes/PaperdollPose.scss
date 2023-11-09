@@ -1,6 +1,4 @@
-@import 'helpers/clothing-styles.scss';
-
-.pose-container {
+.paperdoll-nude-frame {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,10 +6,9 @@
   height: 100%;
   overflow: hidden;
   position: relative;
-  background: linear-gradient(to top, #442304, #9b4d04);
 }
 
-.tshirt-pose2 {
+.paperdoll-nude-svg {
   position: absolute;
   top: 0;
   left: 50%;
