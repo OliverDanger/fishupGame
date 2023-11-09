@@ -1,21 +1,33 @@
 @import 'helpers/clothing-styles.scss';
 
 .pose-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
   width: 50vw;
   height: 100%;
   overflow: hidden;
-  position: relative;
   background: linear-gradient(to top, #442304, #9b4d04);
 }
 
-.tshirt-pose2 {
+.paperdoll-clothing-frame,
+.paperdoll-nude-frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   top: 0;
+  left: 0;
+  width: 50vw;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.paperdoll-clothing-article,
+.paperdoll-nude-svg {
+  position: absolute;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
-  width: 200px;
+  transform: translate(-50%, -50%);
+  width: $paperdoll-width;
   height: auto;
 }

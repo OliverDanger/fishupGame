@@ -15,8 +15,6 @@ export const clothingTypes = [
   'shoes',
 ];
 
-export const paperdollWidth = { width: 200 };
-
 // Map Constants
 
 export const tileSize = 100;

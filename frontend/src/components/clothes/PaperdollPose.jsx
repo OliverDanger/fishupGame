@@ -3,8 +3,6 @@ import { ReactSVG } from 'react-svg';
 
 import '../../styles/clothes/PaperdollPose.scss';
 
-import { paperdollWidth } from '../../utils/_constants';
-
 const PaperdollPose = ({ poseNumber }) => {
   const [svgContent, setSvgContent] = useState(null);
 
@@ -24,7 +22,6 @@ const PaperdollPose = ({ poseNumber }) => {
         <ReactSVG
           src={svgContent}
           className={`paperdoll-nude-svg paperdoll-pose${poseNumber}`}
-          style={{ width: paperdollWidth }}
         />
       }
     </div>
