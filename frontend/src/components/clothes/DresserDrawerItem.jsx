@@ -33,7 +33,7 @@ const DresserDrawerItem = ({ clothingArticle, wearing, setWearing }) => {
       setShowMaxedOutEffect(true);
       setTimeout(() => {
         setShowMaxedOutEffect(false);
-      }, 1000); // Adjust the duration as needed
+      }, 1000);
     }
   };
 
