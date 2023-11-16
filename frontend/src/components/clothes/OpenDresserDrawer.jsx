@@ -14,6 +14,8 @@ const OpenDresserDrawer = ({ clothingType, closeDrawer, userData, wearing, setWe
               <DresserDrawerItem
                 key={index}
                 clothingArticle={clothingArticle}
+                wearing={wearing}
+                setWearing={setWearing}
               />
             );
           }

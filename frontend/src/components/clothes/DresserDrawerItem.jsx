@@ -7,7 +7,10 @@ import { useState, useEffect } from 'react';
 // Name of file path for clothing svg version showing clothing sitting in the drawer
 const pose = 'pose2';
 
-const DresserDrawerItem = ({ clothingArticle }) => {
+// Max clothing items constant for testing
+const maxClothes = 3;
+
+const DresserDrawerItem = ({ clothingArticle, wearing, setWearing }) => {
   const [svgContent, setSvgContent] = useState(null);
 
   useEffect(() => {
@@ -20,8 +23,15 @@ const DresserDrawerItem = ({ clothingArticle }) => {
       });
   }, []);
 
+  const handleAddItem = () => {
+    if (wearing.length < maxClothes) {
+      setWearing([...wearing, clothingArticle]);
+      console.log('❄️', clothingArticle, wearing);
+    }
+  };
+
   return (
-    <div className="dresser-drawer-item">
+    <div className="dresser-drawer-item" onClick={handleAddItem}>
       <h4>{clothingArticle.name}</h4>
       <p>{clothingArticle.description}</p>
       {svgContent &&
