@@ -3,6 +3,7 @@ import '../../styles/clothes/Paperdoll.scss';
 import PaperdollPose from './PaperdollPose';
 import PaperdollClothingArticle from './PaperdollClothingArticle';
 
+// temp value for testing
 const poseNumber = 2;
 
 const Paperdoll = ({ userData, wearing }) => {
