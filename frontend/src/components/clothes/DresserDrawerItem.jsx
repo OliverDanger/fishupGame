@@ -12,6 +12,7 @@ const maxClothes = 3;
 
 const DresserDrawerItem = ({ clothingArticle, wearing, setWearing }) => {
   const [svgContent, setSvgContent] = useState(null);
+  const [showMaxedOutEffect, setShowMaxedOutEffect] = useState(false);
 
   useEffect(() => {
     import(`../../assets/paperdoll/${clothingArticle.category}/${pose}_${clothingArticle.img}.svg`)
@@ -27,11 +28,17 @@ const DresserDrawerItem = ({ clothingArticle, wearing, setWearing }) => {
     if (wearing.length < maxClothes) {
       setWearing([...wearing, clothingArticle]);
       console.log('❄️', clothingArticle, wearing);
+    } else {
+      // Clothes are maxed out, show temporary visual effect
+      setShowMaxedOutEffect(true);
+      setTimeout(() => {
+        setShowMaxedOutEffect(false);
+      }, 1000); // Adjust the duration as needed
     }
   };
 
   return (
-    <div className="dresser-drawer-item" onClick={handleAddItem}>
+    <div className={`dresser-drawer-item ${showMaxedOutEffect ? 'maxed-out' : ''}`} onClick={handleAddItem}>
       <h4>{clothingArticle.name}</h4>
       <p>{clothingArticle.description}</p>
       {svgContent &&
