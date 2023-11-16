@@ -80,6 +80,9 @@ const Dresser = ({ userData, wearing, setWearing }) => {
         <OpenDresserDrawer
           clothingType={dresserState}
           closeDrawer={closeDrawer}
+          userData={userData}
+          wearing={wearing}
+          setWearing={setWearing}
         />
       }
       {}

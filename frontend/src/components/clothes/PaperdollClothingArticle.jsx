@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 
 const PaperdollClothingArticle = ({ poseNumber, clothingArticle }) => {
   const [svgContent, setSvgContent] = useState(null);
-
+  
   useEffect(() => {
     import(`../../assets/paperdoll/${clothingArticle.category}/pose${poseNumber}_${clothingArticle.img}.svg`)
       .then(svg => {

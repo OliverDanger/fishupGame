@@ -14,7 +14,6 @@ const ClosetView = () => {
   const { userData, getUserByID, getUserClothes, getUserWardrobe } = useContext(UserContext);
 
   // wearing is a temporary state for trying on clothes in the closet.
-  // wearing is simply an array of clothing item ids
   // When a clothing choice is confirmed userData is updated using wearing.
   const [ wearing, setWearing ] = useState([]);
 
