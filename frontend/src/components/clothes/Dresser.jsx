@@ -53,7 +53,7 @@ const sampleData = [
 
 
 
-const Dresser = ({ userData }) => {
+const Dresser = ({ userData, wearing, setWearing }) => {
   const [ dresserState, setDresserState] = useState('drawers');
 
   const closeDrawer = () => {
@@ -66,14 +66,21 @@ const Dresser = ({ userData }) => {
 
   return (
     <div className="dresser-container">
-      {/* ALL DRAWERS */}
+      {/* ALL DRAWERS VIEW */}
       {dresserState === 'drawers' && clothingTypes && clothingTypes.map((clothingType, index) => (
-        <ClosedDresserDrawer key={index} clothingType={clothingType} openDrawer={openDrawer} />
+        <ClosedDresserDrawer
+          key={index}
+          clothingType={clothingType}
+          openDrawer={openDrawer}
+        />
       ))}
 
-      {/* OPEN DRAWER */}
+      {/* OPEN DRAWER VIEW */}
       {dresserState !== 'drawers' &&
-        <OpenDresserDrawer clothingType={dresserState} closeDrawer={closeDrawer}/>
+        <OpenDresserDrawer
+          clothingType={dresserState}
+          closeDrawer={closeDrawer}
+        />
       }
       {}
     </div>
