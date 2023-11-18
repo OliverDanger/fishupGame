@@ -1,4 +1,5 @@
 import { ReactSVG } from "react-svg";
+import { useDrag } from "react-dnd";
 
 import '../../styles/clothes/DresserDrawerItem.scss';
 
