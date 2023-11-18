@@ -9,7 +9,7 @@ import { useState, useEffect } from 'react';
 const pose = 'pose2';
 
 // Max clothing items constant for testing
-const maxClothes = 3;
+const maxClothes = 5;
 
 const DresserDrawerItem = ({ clothingArticle, wearing, setWearing }) => {
   const [svgContent, setSvgContent] = useState(null);
@@ -40,14 +40,18 @@ const DresserDrawerItem = ({ clothingArticle, wearing, setWearing }) => {
 
   return (
     <div className={`dresser-drawer-item ${showMaxedOutEffect ? 'maxed-out' : ''}`} onClick={handleAddItem}>
-      <h4>{clothingArticle.name}</h4>
-      <p>{clothingArticle.description}</p>
-      {svgContent &&
-        <ReactSVG
-          src={svgContent}
-          className={`dresser-drawer-item ${clothingArticle.colour}-fill`}
-        />
-      }
+      <div className="drawer-item-img">
+        {svgContent &&
+          <ReactSVG
+            src={svgContent}
+            className={`dresser-drawer-svg ${clothingArticle.colour}-fill`}
+          />
+        }
+      </div>
+      <div className="drawer-item-details">
+        <h4>{clothingArticle.name}</h4>
+        <p>{clothingArticle.description}</p>
+      </div>
     </div>
   );
 };

@@ -15,7 +15,7 @@ const CurrentOutfitManager = ({ wearing, setWearing }) => {
     <div className='outfit-manager'>
       { wearing.map((item, index) => (
         <div key={index} className='outfit-manager-item'>
-          <button className={'delete-outfit-item'} onClick={handleRemove}>X</button>
+          <button className={'delete-outfit-item'} onClick={() => handleRemove(index)}>X</button>
           <p>
             #{index} - {item.name}:
             {item.description}
