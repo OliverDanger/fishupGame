@@ -7,6 +7,7 @@ import "../../styles/pages/ClosetView.scss";
 
 import Paperdoll from "../clothes/Paperdoll";
 import Dresser from "../clothes/Dresser";
+import CurrentOutfitManager from "../clothes/CurrentOutfitManager";
 
 const userID = 1;
 
@@ -15,7 +16,7 @@ const ClosetView = () => {
 
   // wearing is a temporary state for trying on clothes in the closet.
   // When a clothing choice is confirmed userData is updated using wearing.
-  const [ wearing, setWearing ] = useState([]);
+  const [wearing, setWearing] = useState([]);
 
   useEffect(() => {
     if (!userData.user) {
@@ -40,10 +41,16 @@ const ClosetView = () => {
     <div className="closet-view">
 
       <div className="display">
-        <Paperdoll
-          userData={userData}
-          wearing={wearing}
-        />
+        <div className="left-side">
+          <CurrentOutfitManager
+            wearing={wearing}
+            setWearing={setWearing}
+          />
+          <Paperdoll
+            userData={userData}
+            wearing={wearing}
+          />
+        </div>
         <Dresser
           userData={userData}
           wearing={wearing}
