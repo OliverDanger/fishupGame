@@ -174,6 +174,32 @@ clothes = ClothingArticle.create!([
     category:  "shorts",
     img: "basicShorts",
   },
+  {
+    id: 4,
+    name: "Red Socks",
+    description: "Cozy socks,. They're quite red.",
+    colour: "apple",
+    fancy: 0,
+    cool: 0,
+    eccentric: 1,
+    camouflage: -1,
+    set: nil,
+    category:  "socks",
+    img: "basicSocks",
+  },
+  {
+    id: 5,
+    name: "Green Socks",
+    description: "Cozy socks,. They're quite green.",
+    colour: "lime",
+    fancy: 0,
+    cool: 1,
+    eccentric: 0,
+    camouflage: 0,
+    set: nil,
+    category:  "socks",
+    img: "basicSocks",
+  },
 
 ])
 
@@ -190,7 +216,7 @@ users = User.create!([
     password: "ver",
     x_coordinate: 3,
     y_coordinate: 3,
-    clothes: [3, 1],
+    clothes: [5, 3, 1],
   },
 ])
 
@@ -217,6 +243,16 @@ owned_articles = OwnedArticle.create!([
     user_id: 1,
     clothing_article_id: 3,
     number_held: 50,
+  },
+  {
+    user_id: 1,
+    clothing_article_id: 4,
+    number_held: 1,
+  },
+  {
+    user_id: 1,
+    clothing_article_id: 5,
+    number_held: 1,
   },
 ])
 
