@@ -168,7 +168,7 @@ clothes = ClothingArticle.create!([
     name: "Orange Shorts",
     description: "Those are some orange shorts!",
     colour: "orange",
-    accent_colour: "toast",
+    accent_colour: nil,
     fancy: 0,
     cool: 1,
     eccentric: -1,
