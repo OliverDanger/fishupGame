@@ -5,24 +5,40 @@ import '../../styles/clothes/PaperdollClothingArticle.scss';
 import { useState, useEffect } from 'react';
 
 const PaperdollClothingArticle = ({ poseNumber, clothingArticle }) => {
-  const [svgContent, setSvgContent] = useState(null);
+  const [svgContentMain, setSvgContentMain] = useState(null);
+  const [svgContentAccent, setSvgContentAccent] = useState(null);
 
   useEffect(() => {
-    import(`../../assets/paperdoll/${clothingArticle.category}/pose${poseNumber}/${clothingArticle.img}.svg`)
+    import(`../../assets/paperdoll/${clothingArticle.category}/pose${poseNumber}/${clothingArticle.img}-01.svg`)
       .then(svg => {
-        setSvgContent(svg.default);
+        setSvgContentMain(svg.default);
       })
       .catch(error => {
-        console.error('Error loading SVG:', error);
+        console.error('Error loading paperdoll clothing SVG:', error);
+      });
+
+    import(`../../assets/paperdoll/${clothingArticle.category}/pose${poseNumber}/${clothingArticle.img}_trim-01.svg`)
+      .then(svg => {
+        setSvgContentAccent(svg.default);
+      })
+      .catch(error => {
+        console.error('Error loading paperdoll accent SVG:', error);
       });
   }, [poseNumber, clothingArticle]);
 
+
   return (
-    <div className={'paperdoll-clothing-frame'}>
-      { svgContent &&
+    <div className={`paperdoll-clothing-frame clothing-type-${clothingArticle.category}`}>
+      {svgContentAccent &&
         <ReactSVG
-          src={svgContent}
-          className={`paperdoll-clothing-article ${clothingArticle.colour}-fill`}
+          src={svgContentAccent}
+          className={`paperdoll-clothing-accent orange-fill`}
+        />
+      }
+      {svgContentMain &&
+        <ReactSVG
+          src={svgContentMain}
+          className={`paperdoll-clothing-main ${clothingArticle.colour}-fill`}
         />
       }
     </div>

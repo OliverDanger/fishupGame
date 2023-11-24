@@ -7,7 +7,7 @@ const PaperdollPose = ({ poseNumber }) => {
   const [svgContent, setSvgContent] = useState(null);
 
   useEffect(() => {
-    import(`../../assets/paperdoll/poses/pose${poseNumber}_fishbot.svg`)
+    import(`../../assets/paperdoll/poses/pose${poseNumber}_fishbot-01.svg`)
       .then(svg => {
         setSvgContent(svg.default);
       })

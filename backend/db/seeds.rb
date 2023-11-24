@@ -177,7 +177,7 @@ clothes = ClothingArticle.create!([
   {
     id: 4,
     name: "Red Socks",
-    description: "Cozy socks,. They're quite red.",
+    description: "Cozy socks. They're quite red.",
     colour: "apple",
     fancy: 0,
     cool: 0,
@@ -190,7 +190,7 @@ clothes = ClothingArticle.create!([
   {
     id: 5,
     name: "Green Socks",
-    description: "Cozy socks,. They're quite green.",
+    description: "Cozy socks. They're quite green.",
     colour: "lime",
     fancy: 0,
     cool: 1,

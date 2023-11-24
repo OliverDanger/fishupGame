@@ -23,7 +23,8 @@
   z-index: 1;
 }
 
-.paperdoll-clothing-article,
+.paperdoll-clothing-accent,
+.paperdoll-clothing-main,
 .paperdoll-nude-svg {
   position: absolute;
   top: 50%;
@@ -31,4 +32,8 @@
   transform: translate(-50%, -50%);
   width: $paperdoll-width;
   height: auto;
+}
+
+.paperdoll-clothing-accent {
+  z-index: 2;
 }
