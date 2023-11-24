@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_23_134449) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_23_184959) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "clothing_articles", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "colour"
     t.integer "fancy"
     t.integer "cool"
     t.integer "eccentric"
@@ -27,7 +26,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_23_134449) do
     t.datetime "updated_at", null: false
     t.string "img"
     t.string "category"
-    t.string "accent_colour"
+    t.string "colour_part1"
+    t.string "colour_part2"
+    t.string "colour_part3"
   end
 
   create_table "inventories", force: :cascade do |t|
