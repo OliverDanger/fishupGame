@@ -4,7 +4,7 @@ class ClothingArticle < ApplicationRecord
   validates :name, presence: true, length: { maximum: 100 }
   validates :description, presence: true, length: { maximum: 500 }
   validates :colour, presence: true, inclusion: { in: VALID_COLORS, message: "%{value} is not a valid colour" }
-  validates :accent_colour, presence: true, inclusion: { in: VALID_COLORS, message: "%{value} is not a valid colour" }
+  validates :accent_colour, inclusion: { in: VALID_COLORS, message: "%{value} is not a valid colour" }
   validates :category, presence: true, inclusion: { in: %w(hat glasses face neckwear shirt jacket wristwear gloves shorts pants socks shoes)}
   validates :fancy, numericality: true
   validates :cool, numericality: true
