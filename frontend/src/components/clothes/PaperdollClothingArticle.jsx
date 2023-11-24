@@ -5,14 +5,14 @@ import '../../styles/clothes/PaperdollClothingArticle.scss';
 import { useState, useEffect } from 'react';
 
 const PaperdollClothingArticle = ({ poseNumber, clothingArticle }) => {
-  const [svgContentMain, setSvgContentMain] = useState(null);
-  const [svgContentAccent, setSvgContentAccent] = useState(null);
+  const [svgPart1, setSvgPart1] = useState(null);
+  const [svgPart2, setSvgPart2] = useState(null);
 
   // get main svg
   useEffect(() => {
     import(`../../assets/paperdoll/${clothingArticle.category}/pose${poseNumber}/${clothingArticle.img}-01.svg`)
       .then(svg => {
-        setSvgContentMain(svg.default);
+        setSvgPart1(svg.default);
       })
       .catch(error => {
         console.error('Error loading paperdoll clothing SVG:', error);
@@ -26,7 +26,7 @@ const PaperdollClothingArticle = ({ poseNumber, clothingArticle }) => {
       console.log('🦑', clothingArticle.name, clothingArticle.accent_colour);
       import(`../../assets/paperdoll/${clothingArticle.category}/pose${poseNumber}/${clothingArticle.img}_trim-01.svg`)
         .then(svg => {
-          setSvgContentAccent(svg.default);
+          setSvgPart2(svg.default);
         })
         .catch(error => {
           console.error('Error loading paperdoll accent SVG:', error);
@@ -39,13 +39,13 @@ const PaperdollClothingArticle = ({ poseNumber, clothingArticle }) => {
     <div className={`paperdoll-clothing-frame clothing-type-${clothingArticle.category}`}>
       {svgContentAccent && clothingArticle.accent_colour &&
         <ReactSVG
-          src={svgContentAccent}
+          src={svgPart2}
           className={`paperdoll-clothing-accent ${clothingArticle.accent_colour}-fill`}
         />
       }
       {svgContentMain &&
         <ReactSVG
-          src={svgContentMain}
+          src={svgPart1}
           className={`paperdoll-clothing-main ${clothingArticle.colour}-fill`}
         />
       }
