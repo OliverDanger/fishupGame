@@ -154,7 +154,7 @@ clothes = ClothingArticle.create!([
     name: "Black T-shirt",
     description: "A cozy and clean black t-shirt",
     colour: "space",
-    accent_colour: "cloud",
+    accent_colour: "sky",
     fancy: 0,
     cool: 1,
     eccentric: -1,

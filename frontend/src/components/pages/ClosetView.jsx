@@ -35,7 +35,7 @@ const ClosetView = () => {
     }
   }, [userData]);
 
-  // console.log('🍀', userData);
+  console.log('🍀', userData);
 
   return (
     <div className="closet-view">

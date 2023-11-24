@@ -53,6 +53,7 @@ class Api::UsersController < ApplicationController
           name: owned_article.clothing_article.name,
           description: owned_article.clothing_article.description,
           colour: owned_article.clothing_article.colour,
+          accent_colour: owned_article.clothing_article.accent_colour,
           fancy: owned_article.clothing_article.fancy,
           cool: owned_article.clothing_article.cool,
           eccentric: owned_article.clothing_article.eccentric,

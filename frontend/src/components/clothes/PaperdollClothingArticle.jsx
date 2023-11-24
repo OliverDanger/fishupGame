@@ -8,9 +8,8 @@ const PaperdollClothingArticle = ({ poseNumber, clothingArticle }) => {
   const [svgContentMain, setSvgContentMain] = useState(null);
   const [svgContentAccent, setSvgContentAccent] = useState(null);
 
+  // get main svg
   useEffect(() => {
-    console.log('🍕', clothingArticle);
-    // get main svg
     import(`../../assets/paperdoll/${clothingArticle.category}/pose${poseNumber}/${clothingArticle.img}-01.svg`)
       .then(svg => {
         setSvgContentMain(svg.default);
@@ -18,7 +17,11 @@ const PaperdollClothingArticle = ({ poseNumber, clothingArticle }) => {
       .catch(error => {
         console.error('Error loading paperdoll clothing SVG:', error);
       });
-    // get accent svg if accent colour present
+  }, [poseNumber, clothingArticle]);
+
+  // get accent svg if accent colour present
+  useEffect(() => {
+    console.log('🍕', clothingArticle);
     if (clothingArticle.accent_colour && clothingArticle.accent_colour.trim() !== "") {
       console.log('🦑', clothingArticle.name, clothingArticle.accent_colour);
       import(`../../assets/paperdoll/${clothingArticle.category}/pose${poseNumber}/${clothingArticle.img}_trim-01.svg`)

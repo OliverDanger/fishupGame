@@ -16,7 +16,7 @@ const DresserDrawerItem = ({ clothingArticle, wearing, setWearing }) => {
   const [showMaxedOutEffect, setShowMaxedOutEffect] = useState(false);
 
   useEffect(() => {
-    import(`../../assets/paperdoll/${clothingArticle.category}/${pose}_${clothingArticle.img}.svg`)
+    import(`../../assets/paperdoll/${clothingArticle.category}/${pose}/${clothingArticle.img}-01.svg`)
       .then(svg => {
         setSvgContent(svg.default);
       })
