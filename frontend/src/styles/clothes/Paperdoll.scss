@@ -23,8 +23,9 @@
   z-index: 1;
 }
 
-.paperdoll-clothing-accent,
-.paperdoll-clothing-main,
+.paperdoll-clothing-part3,
+.paperdoll-clothing-part2,
+.paperdoll-clothing-part1,
 .paperdoll-nude-svg {
   position: absolute;
   top: 50%;
@@ -34,6 +35,10 @@
   height: auto;
 }
 
-.paperdoll-clothing-accent {
+.paperdoll-clothing-part2 {
   z-index: 2;
+}
+
+.paperdoll-clothing-part3 {
+  z-index: 3;
 }
