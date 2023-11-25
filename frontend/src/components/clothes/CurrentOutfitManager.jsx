@@ -10,10 +10,9 @@ const CurrentOutfitManager = ({ wearing, setWearing }) => {
   };
 
   
-  const handleClothingPosition = (item, originalIndex, newIndex) {
+  const handleClothingPosition = (item, originalIndex, newIndex) => {
     const newWearing = [...wearing];
     const movedItem = newWearing[originalIndex];
-    let newThing = [1];
 
     // Remove the item from its original position
     newWearing.splice(originalIndex, 1);
@@ -28,6 +27,8 @@ const CurrentOutfitManager = ({ wearing, setWearing }) => {
       { wearing.map((item, index) => (
         <div key={index} className='outfit-manager-item'>
           <button className={'delete-outfit-item'} onClick={() => handleRemove(index)}>X</button>
+          <button className={'outfit-item-up'} onClick={(() => handleClothingPosition(item, index, (index - 1)))}>⬆</button>
+          <button className={'outfit-item-down'} onClick={(() => handleClothingPosition(item, index, (index + 1)))}>⬇</button>
           <p>
             #{index} - {item.name}:
             {item.description}
