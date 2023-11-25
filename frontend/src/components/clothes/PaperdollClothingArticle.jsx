@@ -48,23 +48,23 @@ const PaperdollClothingArticle = ({ poseNumber, clothingArticle }) => {
 
 
   return (
-    <div className={`paperdoll-clothing-frame clothing-type-${clothingArticle.category}`}>
+    <div className={`paperdoll-clothing-frame`}>
       {svgPart3 && clothingArticle.colour_part3 &&
         <ReactSVG
           src={svgPart3}
-          className={`paperdoll-clothing-part3 ${clothingArticle.colour_part3}-fill`}
+          className={`paperdoll-clothing-part3 ${clothingArticle.colour_part3}-fill clothing-type-${clothingArticle.category}`}
         />
       }
       {svgPart2 && clothingArticle.colour_part2 &&
         <ReactSVG
           src={svgPart2}
-          className={`paperdoll-clothing-part2 ${clothingArticle.colour_part2}-fill`}
+          className={`paperdoll-clothing-part2 ${clothingArticle.colour_part2}-fill clothing-type-${clothingArticle.category}`}
         />
       }
       {svgPart1 &&
         <ReactSVG
           src={svgPart1}
-          className={`paperdoll-clothing-part1 ${clothingArticle.colour_part1}-fill`}
+          className={`paperdoll-clothing-part1 ${clothingArticle.colour_part1}-fill clothing-type-${clothingArticle.category}`}
         />
       }
     </div>

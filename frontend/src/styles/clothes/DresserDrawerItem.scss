@@ -31,11 +31,44 @@
   
 }
 
-.drawer-item-img {
-  width: 9vw;
-  height: 9vw;
+.dresser-drawer-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min-content;
   border: 1px solid black;
   border-radius: 10px;
-  margin: 5px;
-  overflow: hidden;
+  margin: 10px;
+}
+
+.drawer-item-img {
+  position: relative;
+  width: 150px;
+  height: 150px;
+
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 10px;
+
+  .dresser-clothing-part1,
+  .dresser-clothing-part2,
+  .dresser-clothing-part3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .dresser-clothing-part2 {
+    z-index: 2;
+  }
+  
+  .dresser-clothing-part3 {
+    z-index: 3;
+  }
+}
+
+.drawer-item-details {
+  width: 150px;
 }
