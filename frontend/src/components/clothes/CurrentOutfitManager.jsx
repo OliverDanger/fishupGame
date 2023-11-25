@@ -1,5 +1,3 @@
-import { useDrop } from 'react-dnd';
-
 import '../../styles/clothes/CurrentOutfitManager.scss';
 
 const CurrentOutfitManager = ({ wearing, setWearing }) => {
@@ -10,6 +8,20 @@ const CurrentOutfitManager = ({ wearing, setWearing }) => {
     newWearing.splice(index, 1);
     setWearing(newWearing);
   };
+
+  
+  const handleClothingPosition = (item, originalIndex, newIndex) {
+    const newWearing = [...wearing];
+    const movedItem = newWearing[originalIndex];
+    let newThing = [1];
+
+    // Remove the item from its original position
+    newWearing.splice(originalIndex, 1);
+    // Insert the item at the new position
+    newWearing.splice(newIndex, 0, movedItem);
+
+    setWearing(newWearing)
+  }
 
   return (
     <div className='outfit-manager'>
