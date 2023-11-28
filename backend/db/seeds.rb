@@ -270,7 +270,6 @@ clothes = ClothingArticle.create!([
     category:  "shoes",
     img: "basicSneakers",
   },
-
 ])
 
 puts "Clothes created!"

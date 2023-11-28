@@ -25,7 +25,7 @@ const CurrentOutfitManager = ({ wearing, setWearing }) => {
   return (
     <div className='outfit-manager'>
       { wearing.map((item, index) => (
-        <div key={index} className='outfit-manager-item'>
+        <div key={index} className='outfit-manager-item'style={index % 2 === 0 ? {background: 'black'} : null}>
           <button className={'delete-outfit-item'} onClick={() => handleRemove(index)}>X</button>
           <button className={'outfit-item-up'} onClick={(() => handleClothingPosition(item, index, (index - 1)))}>⬆</button>
           <button className={'outfit-item-down'} onClick={(() => handleClothingPosition(item, index, (index + 1)))}>⬇</button>
