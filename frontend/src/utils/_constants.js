@@ -20,6 +20,6 @@ export const clothingTypes = [
 export const tileSize = 100;
 export const mapWindowMargin = 50;
 
-// Backend URL
+// Testing & DeBackend URL
 
 export const backendURL = `http://localhost:3001`;

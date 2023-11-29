@@ -2,6 +2,9 @@ require_relative "boot"
 
 require "rails/all"
 
+require "dotenv/load"
+Dotenv.load
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -21,9 +24,9 @@ module Fishup
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins 'http://localhost:3000' # Replace with your frontend URL
-        resource '*', headers: :any, methods: [:get, :options]
+        origins ENV['FRONTEND_ORIGIN'] || 'http://localhost:3000'
+        resource '*', headers: :any, methods: [:get, :put, :options]
       end
-    end
+    end    
   end
 end

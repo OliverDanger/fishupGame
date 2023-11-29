@@ -43,7 +43,7 @@ export const UserProvider = ({ children }) => {
       });
   };
 
-  const setUserClothes = (userID, clothes) => {
+  const setUserClothes = (clothes) => {
     return axios.put(`${backendURL}/api/users/${userID}/set_user_clothes`, { clothes })
       .then((res) => {
         return res.data;
