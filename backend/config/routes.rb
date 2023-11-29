@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+  get 'sessions/create'
+  get 'sessions/destroy'
   namespace :api, defaults: { format: :json } do
 
     # GET api/tiles gives all tiles
