@@ -12,7 +12,7 @@ import CurrentOutfitManager from "../clothes/CurrentOutfitManager";
 const userID = 1;
 
 const ClosetView = () => {
-  const { userData, getUserByID, getUserClothes, getUserWardrobe } = useContext(UserContext);
+  const { userData, getUserByID, getUserClothes, setUserClothes, getUserWardrobe } = useContext(UserContext);
 
   // wearing is a temporary state for trying on clothes in the closet.
   // When a clothing choice is confirmed userData is updated using wearing.
@@ -20,12 +20,9 @@ const ClosetView = () => {
 
   useEffect(() => {
     if (!userData.user) {
-      console.log('🦺', userData);
       getUserByID(userID);
       getUserClothes(userID);
       getUserWardrobe(userID);
-    } else {
-      console.log('🧣', userData);
     }
   }, []);
 
@@ -36,6 +33,21 @@ const ClosetView = () => {
   }, [userData]);
 
   console.log('🍀', userData);
+
+  const handleSaveClothes = (clothes) => {
+    if (userData.user && userData.user.id) {
+      const clothesIds = clothes.map(item => item.id);
+      setUserClothes(userData.user.id, clothesIds)
+        .then(data => {
+          console.log('Clothes set successfully:', data);
+        })
+        .catch(error => {
+          console.error('Error setting user clothes:', error);
+        });
+    } else {
+      console.error('No user data available. Unable to save clothes.');
+    }
+  };
 
   return (
     <div className="closet-view">
@@ -59,6 +71,7 @@ const ClosetView = () => {
       </div>
       <Link to={'/cabin'}>
         <button>Back</button>
+        <button onClick={()=> handleSaveClothes(wearing)}>Confirm</button>
       </Link>
     </div>
   );

@@ -43,8 +43,8 @@ export const UserProvider = ({ children }) => {
       });
   };
 
-  const setUserClothes = (clothes) => {
-    return axios.post(`${backendURL}/api/users/${userID}/set_user_clothes`, { clothes })
+  const setUserClothes = (userID, clothes) => {
+    return axios.put(`${backendURL}/api/users/${userID}/set_user_clothes`, { clothes })
       .then((res) => {
         return res.data;
       })

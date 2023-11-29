@@ -34,7 +34,7 @@ class Api::UsersController < ApplicationController
   def set_user_clothes
     @user = User.find(params[:id])
   
-    if @user.update(clothes: params[:clothes])
+    if @user.update(user_params)
       render json: { message: "User's clothes updated successfully." }, status: :ok
     else
       render json: { error: "Failed to update user's clothes." }, status: :unprocessable_entity
@@ -69,6 +69,13 @@ class Api::UsersController < ApplicationController
     else
       render json: { message: "User has no clothes." }, status: :ok
     end
+  end
+
+  private
+
+  # strong parameters to ensure that only permitted parameters are used for updates.
+  def user_params
+    params.permit(:clothes)
   end
   
 
