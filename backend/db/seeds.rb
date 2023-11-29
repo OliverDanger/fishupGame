@@ -283,7 +283,7 @@ users = User.create!([
   {
     id: 1,
     username: "Olly",
-    password: "ver",
+    password_digest: "qwerasdf",
     x_coordinate: 3,
     y_coordinate: 3,
     clothes: [5, 3, 1],
