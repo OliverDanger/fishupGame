@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     # GET api/clothing_articles gives all clothing info
     resources :clothing_articles, only: [:index]
 
+    # User authentication routes
+    post '/login', to: 'sessions#create'
+    delete '/logout', to: 'sessions#destroy'
+
     # GET api/users/get_user_info?username=:username gives selected user info
     # GET api/users/index?id=:id gives selected user info
     resources :users, only: [:index, :update] do 
