@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
-  get 'sessions/create'
-  get 'sessions/destroy'
   namespace :api, defaults: { format: :json } do
 
-    # GET api/tiles gives all tiles
+    # GET api/tiles gives all map tiles
     resources :tiles, only: [:index]
 
     # GET api/clothing_articles?ids=1,2,3,etc... gives selected clothing info by id
@@ -13,11 +10,13 @@ Rails.application.routes.draw do
 
     # User authentication routes
     post '/login', to: 'sessions#create'
-    delete '/logout', to: 'sessions#destroy'
+    post '/logout', to: 'sessions#destroy'
+    get '/logged_in', to: 'sessions#is_logged_in?'
 
     # GET api/users/get_user_info?username=:username gives selected user info
     # GET api/users/index?id=:id gives selected user info
-    resources :users, only: [:create, :show, :index, :update] do 
+    resources :users, only: [:create, :show, :index, :update] do
+      resources :items, only: [:create, :show, :index, :destroy]
       member do
         get 'get_user_clothes'
         get 'get_user_wardrobe'
