@@ -1,7 +1,19 @@
 import { Link } from "react-router-dom";
 import "../../styles/pages/TitleView.scss";
+import { UserContext } from "../../hooks/context/UserContext";
+import { useEffect, useContext } from "react";
 
 const TitleView = () => {
+  const {
+    loginStatus,
+  } = useContext(UserContext);
+
+  useEffect(() => {
+    loginStatus().then(res => {
+      console.log('Login Status:', res);
+    });
+  },[]);
+
   return (
     <div className="title-view">
       <header></header>

@@ -2,20 +2,41 @@ import { createContext, useReducer } from "react";
 import axios from 'axios';
 
 import { backendURL } from "../../utils/_constants";
-import userDataReducer, { SET_USER, SET_USER_CLOTHES, SET_USER_WARDROBE } from "./UserDataReducer";
+import userDataReducer, { SET_USER, HANDLE_LOGIN, HANDLE_LOGOUT, SET_USER_CLOTHES, SET_USER_WARDROBE } from "./UserDataReducer";
 
 export const UserContext = createContext();
 
 const initialUserData = {
-  user: null,
-  clothes: null,
-  wardrobe: null,
+  isLoggedIn: false,
+  user: {},
+  clothes: [],
+  wardrobe: [],
   loading: true,
 };
 
 export const UserProvider = ({ children }) => {
 
   const [userData, dispatchUserData] = useReducer(userDataReducer, initialUserData);
+
+  const loginStatus = () => {
+    return axios.get(`${backendURL}/api/logged_in`, { withCredentials: true })
+      .then(res => {
+        if (res.data.logged_in) {
+          dispatchUserData({
+            type: HANDLE_LOGIN,
+            user: res.data
+          });
+        } else {
+          dispatchUserData({
+            type: HANDLE_LOGOUT
+          });
+        }
+        return res;
+      })
+      .catch(error => {
+        console.error('api errors:', error);
+      });
+  };
 
   const getUserByID = (userID) => {
     axios.get(`${backendURL}/api/users?id=${userID}`)
@@ -70,7 +91,7 @@ export const UserProvider = ({ children }) => {
   return (
     <UserContext.Provider value={{
       userData,
-      dispatchUserData,
+      loginStatus,
       getUserByID,
       getUserClothes,
       setUserClothes,
