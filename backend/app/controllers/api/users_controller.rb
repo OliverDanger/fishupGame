@@ -1,21 +1,49 @@
 class Api::UsersController < ApplicationController
-  def get_user_info
-    @user = User.find_by(username: params[:username])
 
-    if @user
-      render json: @user
-    else
-      render json: { error: "User not found" }, status: :not_found
-    end
+  # Show all users
+  def index 
+    @users = User.all
+      if @users
+        render json: {
+          users: @users
+        }
+      else
+        render json: {
+          status: 500,
+          errors: ['no users found']
+        }
+      end
   end
 
-  def index 
+  # Show a specific user
+  def show
     @user = User.find(params[:id])
-    if @user
-      render json: @user
-    else
-      render json: { error: "User not found" }, status: :not_found
-    end
+      if @user
+        render json: {
+          user: @user
+        }
+      else
+        render json: {
+          status: 500,
+          errors: ['user not found']
+        }
+  end
+
+  # Create a new user
+  def create
+    @user = User.new(user_params)
+      if @user.save
+        login!
+        render json: {
+          status: :created,
+          user: @user
+        }
+      else
+        render json: {
+          status: 500,
+          errors: @user.errors.full_messages
+        }
+      end
   end
 
   def get_user_clothes
@@ -75,7 +103,7 @@ class Api::UsersController < ApplicationController
 
   # strong parameters to ensure that only permitted parameters are used for updates.
   def user_params
-    params.permit(:clothes)
+    params.require(:user).permit(:username, :password, :password_confirmation, :clothes)
   end
   
 

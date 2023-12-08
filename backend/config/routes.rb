@@ -17,9 +17,8 @@ Rails.application.routes.draw do
 
     # GET api/users/get_user_info?username=:username gives selected user info
     # GET api/users/index?id=:id gives selected user info
-    resources :users, only: [:index, :update] do 
+    resources :users, only: [:create, :show, :index, :update] do 
       member do
-        get 'get_user_info'
         get 'get_user_clothes'
         get 'get_user_wardrobe'
         put 'set_user_clothes', to: 'users#set_user_clothes'
