@@ -3,15 +3,17 @@ class Api::SessionsController < ApplicationController
   def create
     @user = User.find_by(username: session_params[:username])
     if @user && @user.authenticate(session_params[:password])
+      # Successful Login
       login!
       render json: {
         logged_in: true,
         user: @user
       }
     else
+      # Unsuccessful Login
       render json: {
         status: 401,
-        errors: ['no such user, please try again']
+        errors: ['Incorrect username or password. Please try again.']
       }
     end
   end

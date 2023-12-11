@@ -34,7 +34,25 @@ export const UserProvider = ({ children }) => {
         return res;
       })
       .catch(error => {
-        console.error('api errors:', error);
+        console.error('Error checking login status:', error);
+      });
+  };
+
+  const login = (user) => {
+    axios.post(`${backendURL}/api/login`, { user }, { withCredentials: true })
+      .then(res => {
+        if (res.data.logged_in) {
+          dispatchUserData({
+            type: HANDLE_LOGIN,
+            user: res.data
+          });
+          console.log('Login Response:',res);
+        } else {
+          console.error("Error logging in - api errors:", res.data.errors);
+        }
+      })
+      .catch(error => {
+        console.error("Error logging in:", error);
       });
   };
 
@@ -92,6 +110,7 @@ export const UserProvider = ({ children }) => {
     <UserContext.Provider value={{
       userData,
       loginStatus,
+      login,
       getUserByID,
       getUserClothes,
       setUserClothes,
