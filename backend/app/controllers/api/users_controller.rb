@@ -9,7 +9,7 @@ class Api::UsersController < ApplicationController
         }
       else
         render json: {
-          status: 500,
+          status: :unprocessable_entity,
           errors: ['no users found']
         }
       end
@@ -24,7 +24,7 @@ class Api::UsersController < ApplicationController
         }
       else
         render json: {
-          status: 500,
+          status: :unprocessable_entity,
           errors: ['user not found']
         }
       end
@@ -41,7 +41,7 @@ class Api::UsersController < ApplicationController
         }
       else
         render json: {
-          status: 500,
+          status: :unprocessable_entity,
           errors: @user.errors.full_messages
         }
       end

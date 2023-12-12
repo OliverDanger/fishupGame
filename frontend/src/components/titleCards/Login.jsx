@@ -28,7 +28,7 @@ const Login = ({ backToTitle }) => {
 
     const { username, password } = { ...loginData };
     console.log('🎊', { username, password });
-    login({ user: { username, password } });
+    login({ username, password });
   };
 
   const { username, password } = loginData;

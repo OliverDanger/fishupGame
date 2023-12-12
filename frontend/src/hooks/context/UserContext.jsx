@@ -14,6 +14,8 @@ const initialUserData = {
   loading: true,
 };
 
+const STARTING_CLOTHES = [1, 3, 7, 9];
+
 export const UserProvider = ({ children }) => {
 
   const [userData, dispatchUserData] = useReducer(userDataReducer, initialUserData);
@@ -38,21 +40,39 @@ export const UserProvider = ({ children }) => {
       });
   };
 
-  const login = (user) => {
-    axios.post(`${backendURL}/api/login`, { user }, { withCredentials: true })
+  const login = ({ username, password }) => {
+    axios.post(`${backendURL}/api/login`, { user: { username, password } }, { withCredentials: true })
       .then(res => {
         if (res.data.logged_in) {
           dispatchUserData({
             type: HANDLE_LOGIN,
             user: res.data
           });
-          console.log('Login Response:',res);
+          console.log('Login Response from User Context:', res);
         } else {
           console.error("Error logging in - api errors:", res.data.errors);
         }
       })
       .catch(error => {
         console.error("Error logging in:", error);
+      });
+  };
+
+  const signup = ({ username, password, password_confirmation }) => {
+    axios.post(`${backendURL}/api/users`, { user: { username, password, password_confirmation, clothes: STARTING_CLOTHES } }, { withCredentials: true })
+      .then(res => {
+        if (res.data.user) {
+          dispatchUserData({
+            type: HANDLE_LOGIN,
+            user: res.data
+          });
+          console.log('Signup Response from User Context:', res);
+        } else {
+          console.error("Error signing up - api errors:", res.data.errors);
+        }
+      })
+      .catch(error => {
+        console.error("Error signing up:", error);
       });
   };
 
@@ -111,6 +131,7 @@ export const UserProvider = ({ children }) => {
       userData,
       loginStatus,
       login,
+      signup,
       getUserByID,
       getUserClothes,
       setUserClothes,
